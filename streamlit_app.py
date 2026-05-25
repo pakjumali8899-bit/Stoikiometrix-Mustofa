@@ -506,7 +506,191 @@ elif st.session_state.get('menu_aktif') == 'level_2':
             st.latex(r"n = \frac{5,85 \text{ gram}}{58,5 \text{ g/mol}} = 0,1 \text{ mol}")
             st.write("Hitung konsentrasi akhir Molaritas:")
             st.latex(r"M = \frac{0,1 \text{ mol}}{1 \text{ Liter}} = 0,1 \text{ M}")
+elif st.session_state.get('menu_aktif') == 'level_3':
+    # --- TOMBOL KEMBALI KE DASHBOARD ---
+    if st.button("⬅️ Kembali ke Dashboard"):
+        st.session_state.menu_aktif = 'dashboard'
+        st.rerun()
         
+    st.title("🔥 Level 3: Perhitungan Persamaan Reaksi & Tabel M-R-S")
+    
+    tab_materi, tab_kuis = st.tabs(["📖 Materi Pembelajaran", "✍️ Kuis Evaluasi Level 3"])
+
+    with tab_materi:
+        # --- Bagian A: Makna Koefisien Reaksi ---
+        st.header("A. Makna Koefisien Reaksi")
+        st.write("Pada Level 1, kita sudah belajar bahwa persamaan reaksi harus setara. Tahukah kamu bahwa angka koefisien yang kita tambahkan di depan senyawa bukan sekadar untuk menyeimbangkan atom, melainkan memiliki makna stoikiometri yang sangat penting?")
+        st.write("Dalam persamaan reaksi kimia, **perbandingan koefisien reaksi selalu berbanding lurus dengan perbandingan jumlah mol zat-zat yang bereaksi**.")
+        
+        st.markdown("**📝 Contoh Soal dengan Pembahasan:**")
+        st.write("Perhatikan reaksi pembentukan gas amonia berikut ini:")
+        st.info("**1 N₂ + 3 H₂  →  2 NH₃**")
+        st.write("Jika direaksikan 2 mol gas nitrogen (N₂) secara sempurna, berapakah jumlah mol gas hidrogen (H₂) yang dibutuhkan dan mol gas amonia (NH₃) yang dihasilkan?")
+        with st.expander("Klik untuk Lihat Pembahasan"):
+            st.write("Gunakan rumus perbandingan koefisien atas-bawah:")
+            st.latex(r"\text{Mol Ditanya} = \frac{\text{Koefisien Ditanya}}{\text{Koefisien Diketahui}} \times \text{Mol Diketahui}")
+            st.write("Mencari mol H₂ yang dibutuhkan:")
+            st.latex(r"n \text{ H}_2 = \frac{3}{1} \times 2 \text{ mol} = 6 \text{ mol}")
+            st.write("Mencari mol NH₃ yang dihasilkan:")
+            st.latex(r"n \text{ NH}_3 = \frac{2}{1} \times 2 \text{ mol} = 4 \text{ mol}")
+            
+        st.markdown("**✍️ Latihan Mandiri (Tanpa Pembahasan):**")
+        st.info("Pada reaksi pembakaran propana: **C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O**. Jika kamu ingin menghasilkan tepat 12 mol gas CO₂, berapakah mol gas O₂ yang harus kamu siapkan?")
+        st.write("---")
+
+        # --- Bagian B: Tabel M-R-S (Mula-mula, Reaksi, Sisa) ---
+        st.header("B. Metode Tabel M-R-S (Mula-mula, Reaksi, Sisa)")
+        st.write("Dalam perhitungan kimia dunia nyata, zat yang kita campurkan tidak selalu langsung habis sempurna. Kadang ada yang bersisa. Untuk memudahkan perhitungan jalannya reaksi, kita wajib menggunakan tabel **M-R-S**.")
+        
+        st.markdown("""
+        * **(M) Mula-mula:** Jumlah mol reaktan yang dicampurkan di awal sebelum reaksi dimulai. Pada tahap ini, zat produk belum terbentuk (bernilai 0 atau strip).
+        * **(R) Reaksi:** Jumlah mol zat yang *benar-benar bereaksi*. **Hanya di baris "Reaksi" inilah perbandingan koefisien berlaku!**
+        * **(S) Sisa (Akhir Reaksi):** Hasil akhir setelah reaksi selesai. 
+          * Untuk **Reaktan (kiri)**: Sisa = Mula-mula dikurangi Reaksi.
+          * Untuk **Produk (kanan)**: Sisa = Mula-mula ditambah Reaksi.
+        """)
+
+        st.markdown("**📝 Contoh Soal dengan Pembahasan:**")
+        st.write("Direaksikan 2 mol gas N₂ dengan 3 mol gas H₂ membentuk gas amonia. Bagaimana jalannya reaksi di dalam tabel M-R-S?")
+        with st.expander("Klik untuk Lihat Simulasi Tabel M-R-S"):
+            st.markdown("""
+            | Tahapan | 1 N₂ | + 3 H₂ | → 2 NH₃ |
+            | :--- | :---: | :---: | :---: |
+            | **(M)ula-mula** | 2 mol | 3 mol | - |
+            | **(R)eaksi** | -1 mol | -3 mol | +2 mol |
+            | **(S)isa** | 1 mol | 0 mol (Habis) | 2 mol |
+            """)
+            st.write("Dari tabel di atas, terlihat jelas bahwa gas H₂ habis bereaksi tak tersisa, sementara gas N₂ masih memiliki sisa sebanyak 1 mol di akhir reaksi, dan terbentuk 2 mol produk NH₃.")
+
+        st.markdown("**✍️ Latihan Mandiri (Tanpa Pembahasan):**")
+        st.info("Reaksi pembentukan hidrogen klorida: **H₂ + Cl₂ → 2 HCl**. Jika mula-mula direaksikan 4 mol H₂ dan 2 mol Cl₂, buatlah tabel M-R-S mandiri dan tentukan zat apa yang bersisa beserta jumlah molnya!")
+        st.write("---")
+
+        # --- Bagian C: Pereaksi Pembatas ---
+        st.header("C. Pereaksi Pembatas (Limiting Reactant)")
+        st.write("Pada contoh M-R-S di atas, H₂ habis lebih dulu, sedangkan N₂ bersisa. Zat yang habis lebih dulu inilah yang disebut **Pereaksi Pembatas**. Pereaksi pembatas sangat penting karena ia **menjadi patokan/batas maksimal** terbentuknya produk.")
+        
+        st.markdown("**Cara Menentukan Pereaksi Pembatas:**")
+        st.write("Lakukan uji pembagian mol mula-mula dengan koefisiennya masing-masing:")
+        st.latex(r"\text{Nilai Uji} = \frac{\text{Mol Mula-mula}}{\text{Koefisien Reaksi}}")
+        st.info("💡 **Aturan Emas:** Reaktan dengan *Nilai Uji* paling kecil ditetapkan sebagai Pereaksi Pembatas. Seluruh perhitungan di baris (R) wajib berpatokan pada mol pereaksi pembatas ini.")
+
+        st.markdown("**📝 Contoh Soal dengan Pembahasan:**")
+        st.write("Sebanyak 16 gram gas metana (CH₄, Mr = 16) dibakar menggunakan 64 gram gas oksigen (O₂, Mr = 32) menurut reaksi: **CH₄ + 2 O₂  →  CO₂ + 2 H₂O**. Tentukan pereaksi pembatas dan massa CO₂ (Mr = 44) yang terbentuk!")
+        
+        with st.expander("Klik untuk Lihat Langkah Penyelesaian"):
+            st.write("**Langkah 1: Ubah semua data ke satuan Mol**")
+            st.latex(r"n \text{ CH}_4 = \frac{16 \text{ gram}}{16 \text{ g/mol}} = 1 \text{ mol}")
+            st.latex(r"n \text{ O}_2 = \frac{64 \text{ gram}}{32 \text{ g/mol}} = 2 \text{ mol}")
+            
+            st.write("**Langkah 2: Uji Pereaksi Pembatas**")
+            st.latex(r"\text{Uji CH}_4 = \frac{1}{1} = 1 \quad \text{dan} \quad \text{Uji O}_2 = \frac{2}{2} = 1")
+            st.write("Karena hasil ujinya sama, maka keduanya habis bereaksi (tidak ada sisa).")
+            
+            st.write("**Langkah 3: Cari mol produk dari patokan Reaksi**")
+            st.write("Karena terbentuk 1 mol CO₂, maka ubah menjadi gram:")
+            st.latex(r"\text{Massa CO}_2 = 1 \text{ mol} \times 44 \text{ g/mol} = 44 \text{ gram}")
+
+        st.markdown("**✍️ Latihan Mandiri (Tanpa Pembahasan):**")
+        st.info("Direaksikan 5,6 gram Besi (Fe, Ar=56) dengan larutan yang mengandung 0,4 mol HCl (Reaksi: **Fe + 2 HCl → FeCl₂ + H₂**). Ujilah siapa pereaksi pembatasnya, dan hitunglah volume gas H₂ yang dihasilkan pada keadaan STP!")
+
+    with tab_kuis:
+        st.subheader("✍️ Kuis Evaluasi Komprehensif Level 3")
+        st.write("Terapkan konsep Jembatan Mol dan Tabel M-R-S untuk memecahkan 10 soal di bawah ini!")
+        st.write("---")
+        
+        q1 = st.radio("1. Diketahui reaksi: N₂ + 3 H₂ → 2 NH₃. Jika direaksikan 2 mol gas N₂ dengan H₂ berlebih, berapakah mol gas NH₃ yang dihasilkan?", ["2 mol", "3 mol", "4 mol", "6 mol"], key="k3_q1")
+        q2 = st.radio("2. Reaksi pembentukan air: 2 H₂ + O₂ → 2 H₂O. Untuk menghasilkan tepat 36 gram H₂O (Mr = 18), berapakah massa gas hidrogen (H₂, Mr = 2) yang bereaksi?", ["2 gram", "4 gram", "8 gram", "16 gram"], key="k3_q2")
+        q3 = st.radio("3. Sebanyak 2,4 gram pita Magnesium (Ar Mg = 24) dimasukkan ke dalam larutan HCl berlebih (Mg + 2 HCl → MgCl₂ + H₂). Berapa volume gas H₂ yang terbentuk pada keadaan kamar (RTP)?", ["1,2 Liter", "2,4 Liter", "11,2 Liter", "22,4 Liter"], key="k3_q3")
+        q4 = st.radio("4. Pada reaksi: A + 2 B → AB₂. Jika dicampurkan 2 mol zat A dan 3 mol zat B, zat manakah yang bertindak sebagai pereaksi pembatas?", ["Zat A", "Zat B", "Senyawa AB₂", "Keduanya habis"], key="k3_q4")
+        q5 = st.radio("5. Belerang dibakar menurut reaksi: S + O₂ → SO₂. Jika disediakan 32 gram S (Ar = 32) dan 32 gram O₂ (Mr = 32), berapakah massa gas SO₂ (Mr = 64) yang dihasilkan di akhir reaksi?", ["32 gram", "48 gram", "64 gram", "128 gram"], key="k3_q5")
+        q6 = st.radio("6. Sebanyak 0,2 mol besi (Fe) dimasukkan ke dalam gelas yang berisi 0,2 mol HCl (Fe + 2 HCl → FeCl₂ + H₂). Setelah reaksi selesai, zat apakah yang BERSISA?", ["Besi (Fe)", "Asam klorida (HCl)", "Keduanya habis", "Gas H₂"], key="k3_q6")
+        q7 = st.radio("7. Melanjutkan soal nomor 6 di atas, berapakah mol gas H₂ yang terbentuk di akhir reaksi?", ["0,1 mol", "0,2 mol", "0,3 mol", "0,4 mol"], key="k3_q7")
+        q8 = st.radio("8. Direaksikan larutan yang mengandung 0,02 mol NaOH dengan larutan yang mengandung 0,02 mol HCl (NaOH + HCl → NaCl + H₂O). Berapa massa garam NaCl (Mr = 58,5) yang diperoleh?", ["0,585 gram", "1,17 gram", "5,85 gram", "11,7 gram"], key="k3_q8")
+        q9 = st.radio("9. Logam Aluminium bereaksi: 2 Al + 3 H₂SO₄ → Al₂(SO₄)₃ + 3 H₂. Jika direaksikan 0,2 mol Al dengan 0,6 mol H₂SO₄, siapakah pereaksi pembatasnya?", ["Aluminium (Al)", "Asam Sulfat (H₂SO₄)", "Keduanya habis", "Gas H₂"], key="k3_q9")
+        q10 = st.radio("10. Reaksi pembakaran metana: CH₄ + 2 O₂ → CO₂ + 2 H₂O. Jika mula-mula direaksikan 2 mol CH₄ dan 3 mol O₂, pada tabel akhir reaksi (Sisa), berapa mol gas CO₂ yang terbentuk dan berapa mol reaktan yang bersisa?", ["1 mol CO₂, sisa 0,5 mol CH₄", "1,5 mol CO₂, sisa 0,5 mol CH₄", "2 mol CO₂, sisa 1 mol O₂", "1,5 mol CO₂, sisa 1 mol O₂"], key="k3_q10")
+
+        st.write("---")
+        if st.button("Periksa Hasil Jawaban & Lihat Pembahasan M-R-S 📝"):
+            skor_hitung = 0
+            if q1 == "4 mol": skor_hitung += 1
+            if q2 == "4 gram": skor_hitung += 1
+            if q3 == "2,4 Liter": skor_hitung += 1
+            if q4 == "Zat B": skor_hitung += 1
+            if q5 == "64 gram": skor_hitung += 1
+            if q6 == "Besi (Fe)": skor_hitung += 1
+            if q7 == "0,1 mol": skor_hitung += 1
+            if q8 == "1,17 gram": skor_hitung += 1
+            if q9 == "Aluminium (Al)": skor_hitung += 1
+            if q10 == "1,5 mol CO₂, sisa 0,5 mol CH₄": skor_hitung += 1
+            
+            skor_final = round((skor_hitung / 10) * 100)
+            st.success(f"Evaluasi selesai! Kamu menjawab {skor_hitung} dari 10 soal dengan benar. Skor kamu: {skor_final} / 100.")
+            st.balloons()
+            
+            st.markdown("### 💡 Kunci Jawaban & Pembahasan Detil Tabel M-R-S:")
+            
+            st.markdown("**Soal 1**")
+            st.write("Karena H₂ berlebih, N₂ otomatis bertindak sebagai penentu (pembatas). Kita cari produk NH₃ menggunakan perbandingan koefisien dengan N₂:")
+            st.latex(r"n \text{ NH}_3 = \frac{2}{1} \times 2 \text{ mol} = 4 \text{ mol}")
+            
+            st.markdown("**Soal 2**")
+            st.write("Langkah 1: Cari mol produk H₂O:")
+            st.latex(r"n \text{ H}_2\text{O} = \frac{36 \text{ gram}}{18 \text{ g/mol}} = 2 \text{ mol}")
+            st.write("Langkah 2: Gunakan perbandingan koefisien untuk mencari mol H₂ di baris (R)eaksi:")
+            st.latex(r"n \text{ H}_2 = \frac{2}{2} \times 2 \text{ mol} = 2 \text{ mol}")
+            st.write("Langkah 3: Ubah mol H₂ menjadi massa:")
+            st.latex(r"\text{Massa H}_2 = 2 \text{ mol} \times 2 \text{ g/mol} = 4 \text{ gram}")
+            
+            st.markdown("**Soal 3**")
+            st.write("Langkah 1: Ubah Mg ke mol:")
+            st.latex(r"n \text{ Mg} = \frac{2,4 \text{ gram}}{24 \text{ g/mol}} = 0,1 \text{ mol}")
+            st.write("Langkah 2: Cari mol H₂ (karena koefisiennya sama 1:1, maka mol H₂ = 0,1 mol).")
+            st.write("Langkah 3: Hitung volume keadaan kamar (RTP):")
+            st.latex(r"V_{\text{RTP}} = 0,1 \text{ mol} \times 24 \text{ L/mol} = 2,4 \text{ Liter}")
+            
+            st.markdown("**Soal 4**")
+            st.write("Uji penentuan pereaksi pembatas:")
+            st.latex(r"\text{Uji A} = \frac{2 \text{ mol}}{1} = 2")
+            st.latex(r"\text{Uji B} = \frac{3 \text{ mol}}{2} = 1,5")
+            st.write("Nilai Uji B lebih kecil, maka **Zat B adalah Pereaksi Pembatas**.")
+            
+            st.markdown("**Soal 5**")
+            st.write("Mol S = 1 mol. Mol O₂ = 1 mol.")
+            st.write("Uji pembatas: S = 1/1 = 1 dan O₂ = 1/1 = 1. Karena hasilnya sama, keduanya habis. Mol SO₂ yang terbentuk di tabel akhir adalah 1 mol.")
+            st.latex(r"\text{Massa SO}_2 = 1 \text{ mol} \times 64 \text{ g/mol} = 64 \text{ gram}")
+            
+            st.markdown("**Soal 6**")
+            st.write("Diketahui mol mula-mula Fe = 0,2 mol dan HCl = 0,2 mol.")
+            st.latex(r"\text{Uji Fe} = \frac{0,2}{1} = 0,2 \quad | \quad \text{Uji HCl} = \frac{0,2}{2} = 0,1")
+            st.write("Karena uji HCl lebih kecil, maka **HCl habis bereaksi**. Pada tabel (R)eaksi, Fe yang terpakai:")
+            st.latex(r"n \text{ Fe bereaksi} = \frac{1}{2} \times 0,2 \text{ mol HCl} = 0,1 \text{ mol}")
+            st.write("Pada tabel (S)isa: 0,2 mol (Mula) - 0,1 mol (Reaksi) = 0,1 mol. Maka **Besi (Fe) bersisa**.")
+            
+            st.markdown("**Soal 7**")
+            st.write("Berdasarkan perhitungan soal nomor 6, patokan produk adalah pereaksi pembatas (HCl = 0,2 mol).")
+            st.latex(r"n \text{ H}_2 = \frac{1}{2} \times 0,2 \text{ mol} = 0,1 \text{ mol}")
+            
+            st.markdown("**Soal 8**")
+            st.write("Karena koefisien NaOH dan HCl berbanding 1:1 dan mol mula-mulanya sama (0,02 mol), keduanya habis tak bersisa. Terbentuk tepat 0,02 mol NaCl.")
+            st.latex(r"\text{Massa NaCl} = 0,02 \text{ mol} \times 58,5 \text{ g/mol} = 1,17 \text{ gram}")
+            
+            st.markdown("**Soal 9**")
+            st.write("Lakukan uji penentu batas:")
+            st.latex(r"\text{Uji Al} = \frac{0,2 \text{ mol}}{2} = 0,1")
+            st.latex(r"\text{Uji H}_2\text{SO}_4 = \frac{0,6 \text{ mol}}{3} = 0,2")
+            st.write("Karena 0,1 < 0,2, maka **Aluminium (Al) adalah pereaksi pembatas** yang habis lebih dulu.")
+            
+            st.markdown("**Soal 10**")
+            st.write("Analisis Tabel M-R-S secara matematis:")
+            st.write("- Mula-mula: CH₄ = 2 mol, O₂ = 3 mol.")
+            st.latex(r"- \text{Uji: CH}_4 = \frac{2}{1} = 2 \quad | \quad \text{O}_2 = \frac{3}{2} = 1,5 \quad \text{(O}_2\text{ Pembatas!)}")
+            st.write("- Reaksi: O₂ bereaksi habis (-3 mol). CH₄ yang bereaksi:")
+            st.latex(r"\text{CH}_4 \text{ (R)} = \frac{1}{2} \times 3 \text{ mol} = 1,5 \text{ mol}")
+            st.write("- Produk CO₂ yang terbentuk:")
+            st.latex(r"\text{CO}_2 \text{ (R)} = \frac{1}{2} \times 3 \text{ mol} = 1,5 \text{ mol}")
+            st.write("- **Sisa (Akhir Reaksi)**: CH₄ bersisa (2 - 1,5 = 0,5 mol). Terbentuk 1,5 mol CO₂.")
+            
 # ==================================================
 # TOMBOL LOGOUT (Selalu di paling bawah)
 # ==================================================
