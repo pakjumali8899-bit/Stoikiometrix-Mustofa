@@ -10,10 +10,13 @@ if 'sudah_login' not in st.session_state:
 if 'menu_aktif' not in st.session_state:
     st.session_state.menu_aktif = 'dashboard'
 
+if 'nama_user' not in st.session_state:
+    st.session_state.nama_user = ""
+
 # --- PENGATURAN TOKEN RAHASIA ---
 TOKEN_AKSES = "54321"
 
-# --- LOGIKA FORM LOGIN (JIKA BELUM LOGIN) ---
+# --- LOGIKA TAMPILAN UTAMA (LOGIN) ---
 if not st.session_state.sudah_login:
     # --- JUDUL ANIMASI KECE STOIKIOMETRIX ---
     st.markdown("""
@@ -48,52 +51,54 @@ if not st.session_state.sudah_login:
         </div>
     """, unsafe_allow_html=True)
     
-    st.write("Silakan masukkan token untuk mengakses aplikasi pembelajaran.")
+    st.write("Silakan masukkan nama dan token untuk mengakses aplikasi pembelajaran.")
     
+    # Input Nama dan Token Akses
+    nama_input = st.text_input("Nama Lengkap:", placeholder="Ketik nama kamu di sini...")
     token_input = st.text_input("Token Akses:", type="password")
     
     if st.button("Masuk 🚀"):
-        if token_input == TOKEN_AKSES:
+        if not nama_input.strip():
+            st.error("❌ Nama lengkap wajib diisi!")
+        elif token_input == TOKEN_AKSES:
             st.session_state.sudah_login = True
+            st.session_state.nama_user = nama_input
             st.success("Token benar! Selamat belajar.")
             st.rerun()
         else:
             st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
-            
-# --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
+
+# --- LOGIKA MENU SETELAH LOGIN ---
 elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
-    if st.session_state.get('menu_aktif') is None:
-        st.session_state.menu_aktif = 'dashboard'
-        st.rerun()
-
-    st.success("Selamat datang kembali di Stoikiometrix! 🎉")
-
+    st.success(f"Selamat datang kembali, {st.session_state.nama_user}! 🎉")
     st.title("🧪 Dashboard Utama")
     st.write("Silakan pilih level pembelajaran di bawah ini:")
 
-    # Inisialisasi status kunci level jika belum ada di memori
     if 'level_2_terbuka' not in st.session_state:
         st.session_state.level_2_terbuka = False
     if 'level_3_terbuka' not in st.session_state:
         st.session_state.level_3_terbuka = False
-        
-        # --- TOMBOL LEVEL 1 (Selalu Terbuka) ---
+
     if st.button("🚀 Masuk ke Level 1: Hukum Dasar Kimia"):
         st.session_state.menu_aktif = 'level_1'
         st.rerun()
-
-    # --- TOMBOL LEVEL 2 (Bebas Akses / Tanpa Kunci) ---
-    st.write("---")
+        
     if st.button("🎮 Masuk ke Level 2: Konsep Mol & Stoikiometri"):
         st.session_state.menu_aktif = 'level_2'
         st.rerun()
-
-    # --- TOMBOL LEVEL 3 (Bebas Akses / Tanpa Kunci) ---
-    st.write("---")
+        
     if st.button("🔥 Masuk ke Level 3: Perhitungan Persamaan Reaksi"):
         st.session_state.menu_aktif = 'level_3'
         st.rerun()
-        
+
+    # Tombol Keluar / Logout
+    st.write("---")
+    if st.button("🚪 Keluar / Logout"):
+        st.session_state.sudah_login = False
+        st.session_state.menu_aktif = 'dashboard'
+        st.rerun()
+
+
 elif st.session_state.get('menu_aktif') == 'level_1':
     if st.button("⬅️ Kembali ke Dashboard"):
         st.session_state.menu_aktif = 'dashboard'
