@@ -707,7 +707,7 @@ elif st.session_state.get('menu_aktif') == 'level_3':
 # TOMBOL LOGOUT (Selalu di paling bawah)
 # ==================================================
 st.write("---")
-if st.button("Keluar / Logout"):
+if st.button("Keluar"):
     st.session_state.sudah_login = False
     st.session_state.username = ""
     if 'menu_aktif' in st.session_state:
