@@ -278,12 +278,6 @@ elif st.session_state.get('menu_aktif') == 'level_1':
             st.markdown("**10. [Hipotesis Avogadro] Jawaban: Jumlah molekul dan Volume gas** (Inti dari hipotesis Amadeo Avogadro)")
 
 
-                                st.latex(r"n = \frac{\text{Jumlah Partikel}}{6,02 \times 10^{23}} \quad \text{atau} \quad \text{Jumlah Partikel} = n \times (6,02 \times 10^{23})")
-        
-        st.markdown("##### 📝 Latihan Soal + Pembahasan")
-        st.write(r"Berapa jumlah atom Besi ($\text{Fe}$) dalam 0,1 mol paku besi?")
-        with st.expander("Lihat Pembahasan"):
-            st.latex(r"\text{Jumlah atom} = 0,1 \times (6,02 \times 10^{23}) = 6,02 \times 10^{22} \text{ atom}")
 
 elif st.session_state.get('menu_aktif') == 'level_2':
     if st.button("⬅️ Kembali ke Dashboard"):
