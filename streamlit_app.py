@@ -65,8 +65,12 @@ if not st.session_state.sudah_login:
             st.error(teks[lang]['salah'])
 
 # --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
-elif st.session_state.get('menu_aktif') == 'dashboard':
-    
+elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
+    # Pengaman otomatis: Jika menu ketahuan kosong, langsung set ke dashboard
+    if st.session_state.get('menu_aktif') is None:
+        st.session_state.menu_aktif = 'dashboard'
+        st.rerun()
+
     st.success(f"{teks[lang]['berhasil']} {st.session_state.username}! 🎉")
     
     # Menu Pilihan Dashboard Utama
@@ -78,7 +82,6 @@ elif st.session_state.get('menu_aktif') == 'dashboard':
         st.rerun()
 
 elif st.session_state.get('menu_aktif') == 'level_1':
-    
     if st.button("⬅️ Kembali ke Dashboard"):
         st.session_state.menu_aktif = 'dashboard'
         st.rerun()
@@ -130,7 +133,7 @@ elif st.session_state.get('menu_aktif') == 'level_1':
 
         # --- 3. DALTON ---
         st.subheader("3. Hukum Perbandingan Berganda (Hukum Dalton)")
-        st.info("John Dalton (1803): Jika dua unsur membentuk lebih dari satu senyawa, dan **massa salah satu unsur dibuat sama**, maka **perbandingan massa unsur lainnya berbanding sebagai bilangan bulat dan sederhana.**")
+        st.info("John Dalton (1803): Jika dua unsur membentuk lebih dari satu senyawa, and **massa salah satu unsur dibuat sama**, maka **perbandingan massa unsur lainnya berbanding sebagai bilangan bulat dan sederhana.**")
         
         st.markdown("##### 📝 Latihan Soal + Pembahasan")
         st.write("Senyawa I mengandung 40% unsur X, dan Senyawa II mengandung 50% unsur X. Buktikan fenomena ini memenuhi Hukum Dalton!")
@@ -222,4 +225,4 @@ if st.button("Keluar / Logout"):
     if 'menu_aktif' in st.session_state:
         del st.session_state.menu_aktif
     st.rerun()
-        
+    
