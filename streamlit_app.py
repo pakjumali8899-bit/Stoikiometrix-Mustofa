@@ -706,14 +706,3 @@ elif st.session_state.get('menu_aktif') == 'level_3':
             st.latex(r"n_{\text{CO}_2} \text{ terbentuk} = \frac{1}{2} \times 3 \text{ mol} = 1,5 \text{ mol}")
             st.write("- Keadaan Akhir (Sisa): CH₄ bersisa (2 - 1,5 = 0,5 mol) dan terbentuk 1,5 mol gas CO₂.")
             
-# ==================================================
-# TOMBOL LOGOUT (Selalu di paling bawah)
-# ==================================================
-st.write("---")
-if st.button("Keluar"):
-    st.session_state.sudah_login = False
-    st.session_state.username = ""
-    if 'menu_aktif' in st.session_state:
-        del st.session_state.menu_aktif
-    st.rerun()
-    
