@@ -1,51 +1,72 @@
 import streamlit as st
 
 # --- KONFIGURASI HALAMAN ---
-st.set_page_config(page_title="Stoikiometrix Mustofa", page_icon="🧪")
+st.set_page_config(page_title="Stoikiometrix by Mustofa", page_icon="🧪")
 
 # --- SESSION STATE UNTUK BAHASA & LOGIN ---
 # Ini fungsi agar web ingat pilihan bahasa dan status login siswa
-if 'bahasa' not in st.session_state:
-    st.session_state.bahasa = 'ID'
+# --- INISIALISASI STATUS LOGIN ---
+if 'sudah_login' not in st.session_state:
+    st.session_state.sudah_login = False
+
+# --- PENGATURAN TOKEN RAHASIA ---
+TOKEN_AKSES = "54321"  # Kamu bisa ubah kode tokennya di sini
+
+# --- LOGIKA FORM LOGIN ---
+if not st.session_state.sudah_login:
+    # --- JUDUL ANIMASI KECE STOIKIOMETRIX ---
+    st.markdown("""
+        <style>
+        @keyframes gradient-gerak {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .judul-kece {
+            font-size: 45px;
+            font-weight: 800;
+            background: linear-gradient(-45deg, #ff4b4b, #ff8585, #4b92ff, #2b5cff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-gerak 4s ease infinite;
+            display: inline-block;
+        }
+        .sub-flat {
+            font-size: 20px;
+            color: #666666;
+            font-weight: 400;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        </style>
+        <div>
+            <span class="judul-kece">Stoikiometrix</span>
+            <span class="sub-flat">by Mustofa</span>
+        </div>
+    """, unsafe_allow_html=True)
+    st.write("Silakan masukkan token untuk mengakses aplikasi pembelajaran.")
+    
+    # Input khusus untuk Token
+    token_input = st.text_input("Token Akses:", type="password", help="Masukkan kode akses dari Gurumu")
+    
+    if st.button("Masuk 🚀"):
+        if token_input == TOKEN_AKSES:
+            st.session_state.sudah_login = True
+            st.success("Token benar! Selamat belajar.")
+            st.rerun()
+        else:
+            st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
+
+else:
+    # --- SEMUA KODE DASHBOARD UTAMA KAMU (LEVEL 1, 2, 3) DI LETAKKAN DI SINI ---
+    # Pastikan kode menu dashboard & level kamu berada di dalam blok 'else' ini (menjorok ke dalam)
+    
 if 'sudah_login' not in st.session_state:
     st.session_state.sudah_login = False
 if 'username' not in st.session_state:
     st.session_state.username = ""
-
-# --- FUNGSI GANTI BAHASA ---
-def ganti_bahasa():
-    if st.session_state.bahasa == 'ID':
-        st.session_state.bahasa = 'EN'
-    else:
-        st.session_state.bahasa = 'ID'
-
-# Tombol ganti bahasa di pojok
-st.button("🌐 ID / EN", on_click=ganti_bahasa)
-
-# --- KAMUS BAHASA ---
-teks = {
-    'ID': {
-        'judul': "Selamat Datang di Stoikiometrix Mustofa! 🧪",
-        'subjudul': "Silakan login untuk memulai petualangan belajarmu.",
-        'user': "Nama Pengguna (Username)",
-        'pass': "Kata Sandi",
-        'masuk': "Masuk",
-        'berhasil': "Login berhasil! Selamat belajar, ",
-        'salah': "Username atau password tidak boleh kosong!"
-    },
-    'EN': {
-        'judul': "Welcome to Stoikiometrix Mustofa! 🧪",
-        'subjudul': "Please login to start your learning adventure.",
-        'user': "Username",
-        'pass': "Password",
-        'masuk': "Login",
-        'berhasil': "Login successful! Happy learning, ",
-        'salah': "Username or password cannot be empty!"
-    }
-}
-
-lang = st.session_state.bahasa
-
 # --- HALAMAN LOGIN ---
 if not st.session_state.sudah_login:
     st.title(teks[lang]['judul'])
