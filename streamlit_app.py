@@ -385,7 +385,9 @@ elif st.session_state.get('menu_aktif') == 'level_1':
             st.info("12. **26,67%**")
             st.latex(r"\%O = \frac{1 \times 16}{60} \times 100\% = 26,67\%")
             
- elif st.session_state.get('menu_aktif') == 'level_2':
+         st.write("Pada suhu dan tekanan tertentu, 1 mol gas N2 memiliki volume 15 Liter. Pada kondisi lingkungan yang sama, berapakah volume dari 0,4 mol gas oksigen (O2)?")
+
+elif st.session_state.get('menu_aktif') == 'level_2':
     if st.button("⬅️ Kembali ke Dashboard"):
         st.session_state.menu_aktif = 'dashboard'
         st.rerun()
@@ -414,7 +416,7 @@ elif st.session_state.get('menu_aktif') == 'level_1':
         st.latex(r"\text{Massa (gram)} = n \times \text{Ar atau Mr}")
         
         st.markdown("##### 📝 Latihan Soal + Pembahasan")
-        st.write("Hitunglah jumlah mol dari 12,6 gram asam nitrat (HNO3) jika diketahui Ar H=1, N=14, O=16!")
+        st.write("Hitunglah jumlah mol dari 12,6 gram asam nitrat HNO3 jika diketahui Ar H=1, N=14, O=16!")
         with st.expander("Klik untuk melihat Pembahasan"):
             st.write("Mr HNO3 = 1 + 14 + (3 x 16) = 63 g/mol")
             st.latex(r"n = \frac{12,6 \text{ gram}}{63 \text{ g/mol}} = 0,2 \text{ mol}")
