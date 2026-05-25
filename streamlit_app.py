@@ -97,7 +97,7 @@ elif st.session_state.sudah_login and (st.session_state.menu_aktif == 'dashboard
         st.rerun()
 
 
-elf st.session_state.get('menu_aktif') == 'level_1':
+elif st.session_state.get('menu_aktif') == 'level_1':
     if st.button("⬅️ Kembali ke Dashboard"):
         st.session_state.menu_aktif = 'dashboard'
         st.rerun()
