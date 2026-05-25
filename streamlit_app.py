@@ -16,7 +16,7 @@ if 'nama_user' not in st.session_state:
 # --- PENGATURAN TOKEN RAHASIA ---
 TOKEN_AKSES = "54321"
 
-# --- LOGIKA TAMPILAN UTAMA (LOGIN) ---
+# --- 1. TAMPILAN HALAMAN LOGIN (JIKA BELUM LOGIN) ---
 if not st.session_state.sudah_login:
     st.markdown("""
         <style>
@@ -66,8 +66,8 @@ if not st.session_state.sudah_login:
         else:
             st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
 
-# --- LOGIKA TAMPILAN DASHBOARD (SETELAH LOGIN) ---
-elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
+# --- 2. TAMPILAN DASHBOARD UTAMA (JIKA SUDAH LOGIN & DI MENU DASHBOARD) ---
+elif st.session_state.sudah_login and (st.session_state.menu_aktif == 'dashboard' or st.session_state.menu_aktif is None):
     st.success(f"Selamat datang kembali, {st.session_state.nama_user}! 🎉")
     st.title("🧪 Dashboard Utama")
     st.write("Silakan pilih level pembelajaran di bawah ini:")
@@ -89,6 +89,7 @@ elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('
         st.session_state.menu_aktif = 'level_3'
         st.rerun()
 
+    # TOMBOL KELUAR HANYA ADA DI SINI (Muncul hanya jika sudah sukses login)
     st.write("---")
     if st.button("🚪 Keluar / Logout"):
         st.session_state.sudah_login = False
@@ -96,7 +97,7 @@ elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('
         st.rerun()
 
 
-elif st.session_state.get('menu_aktif') == 'level_1':
+elf st.session_state.get('menu_aktif') == 'level_1':
     if st.button("⬅️ Kembali ke Dashboard"):
         st.session_state.menu_aktif = 'dashboard'
         st.rerun()
