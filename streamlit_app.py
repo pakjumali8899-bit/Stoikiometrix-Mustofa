@@ -69,29 +69,61 @@ if 'username' not in st.session_state:
     st.session_state.username = ""
 # --- HALAMAN LOGIN ---
 if not st.session_state.sudah_login:
-    st.title(teks[lang]['judul'])
-    st.write(teks[lang]['subjudul'])
+    # --- JUDUL ANIMASI KECE STOIKIOMETRIX ---
+    st.markdown("""
+        <style>
+        @keyframes gradient-gerak {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .judul-kece {
+            font-size: 45px;
+            font-weight: 800;
+            background: linear-gradient(-45deg, #ff4b4b, #ff8585, #4b92ff, #2b5cff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-gerak 4s ease infinite;
+            display: inline-block;
+        }
+        .sub-flat {
+            font-size: 20px;
+            color: #666666;
+            font-weight: 400;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        </style>
+        <div>
+            <span class="judul-kece">Stoikiometrix</span>
+            <span class="sub-flat">by Mustofa</span>
+        </div>
+    """, unsafe_allow_html=True)
     
-    # Kolom input
-    username = st.text_input(teks[lang]['user'])
-    password = st.text_input(teks[lang]['pass'], type="password")
+    st.write("Silakan masukkan token untuk mengakses aplikasi pembelajaran.")
     
-    # Logika jika tombol masuk ditekan
-    if st.button(teks[lang]['masuk']):
-        if username and password:
+    # Input khusus untuk Token
+    token_input = st.text_input("Token Akses:", type="password")
+    
+    if st.button("Masuk 🚀"):
+        if token_input == "54321":
             st.session_state.sudah_login = True
-            st.session_state.username = username
-            st.rerun() # Refresh halaman setelah login
+            st.session_state.username = "Mustofa"
+            st.success("Token benar! Selamat belajar.")
+            st.rerun()
         else:
-            st.error(teks[lang]['salah'])
-
+            st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
+            
 # --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
 elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
     if st.session_state.get('menu_aktif') is None:
         st.session_state.menu_aktif = 'dashboard'
         st.rerun()
 
-    st.success(f"{teks[lang]['berhasil']} {st.session_state.username}! 🎉")
+    st.success(f"Selamat datang kembali, {st.session_state.username}! 🎉")
+    
     
     st.title("📋 Dashboard Utama")
     st.write("Silakan pilih level pembelajaran di bawah ini:")
