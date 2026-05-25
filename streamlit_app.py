@@ -515,49 +515,13 @@ elif st.session_state.get('menu_aktif') == 'level_2':
         q11 = st.radio("11. Sebanyak 0,1 mol asam klorida (HCl) dilarutkan ke dalam air hingga volume 500 mL. Berapakah molaritas larutan?", ["0,1 M", "0,2 M", "0,5 M", "0,05 M"], key="l2q11")
         q12 = st.radio("12. Berapakah persentase massa unsur Oksigen (Ar O=16) di dalam senyawa urea CO(NH2)2 yang memiliki Mr = 60?", ["16,67%", "26,67%", "40,00%", "12,00%"], key="l2q12")
         q13 = st.radio("13. Berapakah jumlah mol zat terlarut yang ada di dalam 250 mL larutan asam sulfat (H2SO4) dengan konsentrasi 0,4 M?", ["0,1 mol", "1 mol", "0,01 mol", "0,4 mol"], key="l2q13")
-        q14 = st.radio("14. Suatu senyawa hidrokarbon memiliki rumus empiris CH2 dengan Mr = 56. Rumus molekul senyawa tersebut adalah...", ["C2H4", "C3H6", "C4H8", "C5H10"], key="l2q14")
-        q15 = st.radio("15. Massa dari 11,2 Liter gas X pada keadaan STP adalah 22 gram. Berapakah jumlah partikel molekul yang ada di dalam 44 gram gas X tersebut?", ["6,02 x 10^23 molekul", "3,01 x 10^23 molekul", "1,204 x 10^24 molekul", "6,02 x 10^22 molekul"], key="l2q15")
-
-        st.write("---")
-        if st.button("Periksa Hasil Jawaban & Lihat Pembahasan 📝"):
-            jawaban_benar = 0
-            if q1 == "36 gram": jawaban_benar += 1
-            if q2 == "1 mol": jawaban_benar += 1
-            if q3 == "3,01 x 10^23 atom": jawaban_benar += 1
-            if q4 == "2 mol": jawaban_benar += 1
-            if q5 == "56 g/mol": jawaban_benar += 1
-            if q6 == "5,6 Liter": jawaban_benar += 1
-            if q7 == "12 Liter": jawaban_benar += 1
-            if q8 == "12,3 Liter": jawaban_benar += 1
-            if q9 == "20 Liter": jawaban_benar += 1
-            if q10 == "5,6 gram": jawaban_benar += 1
-            if q11 == "0,2 M": jawaban_benar += 1
-            if q12 == "26,67%": jawaban_benar += 1
-            if q13 == "0,1 mol": jawaban_benar += 1
-            if q14 == "C4H8": jawaban_benar += 1
-            if q15 == "6,02 x 10^23 molekul": jawaban_benar += 1
-            
-            skor = round((jawaban_benar / 15) * 100)
-            st.success(f"Selesai! Kamu menjawab {jawaban_benar} dari 15 soal dengan benar. Skor kamu: {skor}.")
-            st.balloons()
-                
-            st.markdown("### 💡 Kunci Jawaban & Pembahasan Detil")
-            st.info("1. **36 gram** -> Mr H2O = 18. Massa = 2 mol x 18 = 36 gram.")
-            st.info("2. **1 mol** -> n = 12 gram / 12 g/mol = 1 mol.")
-            st.info("3. **3,01 x 10^23 atom** -> Partikel = 0,5 x 6,02 x 10^23 = 3,01 x 10^23 atom.")
-            st.info("4. **2 mol** -> n = (1,204 x 10^24) / (6,02 x 10^23) = 2 mol.")
-            st.info("5. **56 g/mol** -> n = 0,5 mol. Ar = 28 gram / 0,5 mol = 56 g/mol.")
-            st.info("6. **5,6 Liter** -> V = 0,25 x 22,4 = 5,6 Liter.")
-            st.info("7. **12 Liter** -> n = 8/16 = 0,5 mol. V = 0,5 x 24 = 12 Liter.")
-            st.info("8. **12,3 Liter** -> V = (0,5 x 0,082 x 300) / 1 = 12,3 Liter.")
-            st.info("9. **20 Liter** -> Perbandingan mol = perbandingan volume. Mol naik 2x, volume naik 2x.")
-            st.info("10. **5,6 gram** -> n = 4,48 / 22,4 = 0,2 mol. Massa = 0,2 x 28 = 5,6 gram.")
-            st.info("11. **0,2 M** -> M = 0,1 mol / 0,5 Liter = 0,2 Molar.")
-            st.info("12. **26,67%** -> %O = (1 x 16) / 60 x 100% = 26,67%.")
-            st.info("13. **0,1 mol** -> n = 0,4 M x 0,25 Liter = 0,1 mol.")
-            st.info("14. **C4H8** -> Mr (CH2)n = 56 -> 14n = 56 -> n = 4. Maka C4H8.")
-            st.info("15. **6,02 x 10^23 molekul** -> 11,2 L STP = 0,5 mol. Jika massanya 22 gram, maka Mr = 44. Jadi, 44 gram = 1 mol = 6,02 x 10^23 molekul.")
-            
+elif st.session_state.get('menu_aktif') == 'level_2':
+    if st.button("⬅️ Kembali ke Dashboard"):
+        st.session_state.menu_aktif = 'dashboard'
+        st.rerun()
+    st.title("🧪 Level 2: Konsep Mol (Sedang dalam Perbaikan)")
+    st.info("Materi Level 2 sedang dirapikan kembali agar penulisan senyawanya lebih niat dan rapi 100%.")
+    
 # ==================================================
 # TOMBOL LOGOUT (Selalu di paling bawah)
 # ==================================================
