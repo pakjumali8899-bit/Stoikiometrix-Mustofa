@@ -65,7 +65,7 @@ if not st.session_state.sudah_login:
             st.error(teks[lang]['salah'])
 
 # --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
-        elif st.session_state.menu_aktif == 'dashboard':
+    elif st.session_state.menu_aktif == 'dashboard':
 
     
     st.success(f"{teks[lang]['berhasil']} {st.session_state.username}! 🎉")
