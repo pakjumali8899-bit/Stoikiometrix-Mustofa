@@ -468,15 +468,14 @@ elif st.session_state.get('menu_aktif') == 'level_2':
             st.latex(r"V = \frac{0,1 \times 0,082 \times 300}{2} = 1,23 \text{ Liter}")
 
         st.markdown("##### ✍️ Soal Latihan Mandiri (Tanpa Pembahasan)")
-        st.write("Pada suhu dan tekanan tertentu, 1 mol gas N2 memiliki volume 15 Liter. Pada kondisi lingkungan yang sama, berapakah volume dari 0,4 mol gas oksigen (O2)?")
-        st.write("---")
-
+        
         # --- 4. Mol dan Molaritas ---
         st.subheader("4. Hubungan Mol dengan Molaritas (Konsentrasi)")
         st.write("Molaritas (M) menyatakan banyaknya mol zat terlarut dalam setiap satu Liter larutan.")
         st.markdown("**🔄 Rumus Bolak-Balik:**")
         st.latex(r"M = \frac{n}{V_{\text{Liter}}} \quad \iff \quad n = M \times V_{\text{Liter}}")
-
+                st.write("Pada suhu dan tekanan tertentu, 1 mol gas N2 memiliki volume 15 Liter. Pada kondisi lingkungan yang sama, berapakah volume dari 0,4 mol gas oksigen (O2)?")
+        
         st.markdown("##### 📝 Latihan Soal + Pembahasan")
         st.write("Sebanyak 4 gram kristal NaOH (Mr = 40) dilarutkan ke dalam air hingga volume larutan mencapai 250 mL. Berapakah Molaritas larutan yang terbentuk?")
         with st.expander("Klik untuk melihat Pembahasan"):
