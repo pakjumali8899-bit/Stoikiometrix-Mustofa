@@ -101,7 +101,7 @@ else:
     # ==========================================
     # KONDISI B: JIKA SISWA MASUK KE LEVEL 1
     # ==========================================
-        elif st.session_state.menu_aktif == 'level_1':
+elif st.session_state.menu_aktif == 'level_1':
         if st.button("⬅️ Kembali ke Dashboard"):
             st.session_state.menu_aktif = 'dashboard'
             st.rerun()
