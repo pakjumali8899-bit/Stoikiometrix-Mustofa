@@ -302,180 +302,164 @@ elif st.session_state.get('menu_aktif') == 'level_2':
         st.markdown("*Sumber referensi materi & ilustrasi: [Segalanya Kimia - Konsep Mol](https://segalanyakimia.blogspot.com/2017/04/konsep-mol.html)*")
         st.write("---")
 
-        # --- 1. Mol dan Massa ---
+               # --- 1. Mol dan Massa (Bolak-Balik) ---
         st.subheader("1. Hubungan Mol dengan Massa")
-        st.latex(r"n = \frac{\text{Massa (gram)}}{\text{Ar atau Mr}} \quad \text{atau} \quad \text{Massa} = n \times \text{Mr}")
+        st.write("Massa suatu zat berkaitan langsung dengan jumlah mol melalui Massa Molar ($Ar$ atau $Mr$).")
+        st.markdown("**🔄 Rumus Bolak-Balik:**")
+        st.latex(r"n = \frac{\text{Massa (gram)}}{\text{Ar atau Mr}} \quad \iff \quad \text{Massa (gram)} = n \times \text{Ar atau Mr}")
         
         st.markdown("##### 📝 Latihan Soal + Pembahasan")
-        st.write(r"Hitunglah jumlah mol dari 31,5 gram $\text{HNO}_3$! (Ar H=1, N=14, O=16)")
-        with st.expander("Klik di sini untuk melihat Pembahasan"):
-            st.latex(r"\text{Mr HNO}_3 = 1 + 14 + (3 \times 16) = 63")
-            st.latex(r"n = \frac{31,5\text{ gram}}{63} = 0,5\text{ mol}")
+        st.write("Hitunglah jumlah mol dari 12,6 gram asam nitrat ($\text{HNO}_3$)! (Ar H=1, N=14, O=16)")
+        with st.expander("Klik untuk melihat Pembahasan"):
+            st.write("**Jawaban:**")
+            st.latex(r"\text{Mr HNO}_3 = 1 + 14 + (3 \times 16) = 63\text{ g/mol}")
+            st.latex(r"n = \frac{12,6\text{ gram}}{63\text{ g/mol}} = 0,2\text{ mol}")
             
-        st.markdown("##### ✍️ Latihan Mandiri (Tanpa Pembahasan)")
-        st.write(r"Berapa massa dari 0,2 mol kalsium karbonat ($\text{CaCO}_3$)? (Ar Ca=40, C=12, O=16)")
-        st.text_input("Tulis jawabanmu (contoh: 20 gram):", key="l2_m1")
+        st.markdown("##### ✍️ Soal Latihan Mandiri (Tanpa Pembahasan)")
+        st.write("Tantang dirimu: Berapakah massa dari 0,3 mol senyawa kalsium fosfat ($\text{Ca}_3(\text{PO}_4)_2$)? (Ar Ca=40, P=31, O=16)")
         st.write("---")
 
-        # --- 2. Mol dan Jumlah Partikel ---
+        # --- 2. Mol dan Jumlah Partikel (Koreksi Eksponen Positif) ---
         st.subheader("2. Hubungan Mol dengan Jumlah Partikel")
-        st.write("Satu mol zat mengandung partikel sebanyak Bilangan Avogadro ($L = 6,02 \times 10^{23}$).")
-        st.latex(r"n = \frac{\text{Jumlah Partikel}}{6,02 \times 10^{23}} \quad \text{atau} \quad \text{Jumlah Partikel} = n \times (6,02 \times 10^{23})")
+        st.write("Satu mol zat apa pun akan selalu mengandung jumlah partikel sebanyak bilangan Avogadro ($L = 6,02 \times 10^{23}$ partikel/mol).")
+        st.markdown("**🔄 Rumus Bolak-Balik:**")
+        st.latex(r"n = \frac{\text{Jumlah Partikel}}{6,02 \times 10^{23}} \quad \iff \quad \text{Jumlah Partikel} = n \times (6,02 \times 10^{23})")
         
         st.markdown("##### 📝 Latihan Soal + Pembahasan")
-        st.write(r"Berapa jumlah atom Besi ($\text{Fe}$) dalam 0,1 mol paku besi?")
-        with st.expander("Klik di sini untuk melihat Pembahasan"):
-            st.latex(r"\text{Jumlah atom} = 0,1 \times (6,02 \times 10^{23}) = 6,02 \times 10^{22} \text{ atom}")
+        st.write("Sebuah paku besi mengandung sebanyak $3,01 \times 10^{22}$ atom besi ($\text{Fe}$). Tentukan jumlah mol besi dalam paku tersebut!")
+        with st.expander("Klik untuk melihat Pembahasan"):
+            st.write("**Jawaban:**")
+            st.latex(r"n = \frac{3,01 \times 10^{22}}{6,02 \times 10^{23}} = 0,05\text{ mol}")
 
-        st.markdown("##### ✍️ Latihan Mandiri (Tanpa Pembahasan)")
-        st.write(r"Suatu sampel mengandung $3,01 \times 10^{23}$ molekul air. Berapa mol air tersebut?")
-        st.text_input("Tulis jawabanmu (contoh: 0,5 mol):", key="l2_m2")
+        st.markdown("##### ✍️ Soal Latihan Mandiri (Tanpa Pembahasan)")
+        st.write("Tantang dirimu: Hitunglah berapa total jumlah molekul gas amonia yang terkandung di dalam wadah berisi 2,5 mol gas $\text{NH}_3$!")
         st.write("---")
 
-        # --- 3. Mol dan Volume Gas ---
+        # --- 3. Mol dan Volume Gas (4 Kondisi Lengkap) ---
         st.subheader("3. Hubungan Mol dengan Volume Gas")
-        st.write("Volume gas sangat bergantung pada suhu (T) dan tekanan (P). Ada 3 kondisi utama:")
-        st.markdown("**A. Keadaan Standar / STP (0°C, 1 atm)**")
-        st.latex(r"\text{Volume}_{STP} = n \times 22,4\text{ L/mol}")
-        st.markdown("**B. Keadaan Ruang / RTP (25°C, 1 atm)**")
-        st.latex(r"\text{Volume}_{RTP} = n \times 24\text{ L/mol}")
-        st.markdown("**C. Gas Ideal (Suhu & Tekanan Tertentu)**")
-        st.latex(r"P \times V = n \times R \times T")
-        st.caption("P = Tekanan (atm), V = Volume (L), R = 0,082 L.atm/mol.K, T = Suhu (Kelvin = °C + 273)")
+        st.write("Volume gas dipengaruhi oleh lingkungan suhu ($T$) dan tekanan ($P$). Berikut 4 kondisi perhitungannya:")
         
-        st.markdown("##### 📝 Latihan Soal + Pembahasan")
-        st.write(r"Berapa volume 8 gram gas $\text{CH}_4$ (Mr=16) pada suhu 27°C dan tekanan 1 atm? (R=0,082)")
-        with st.expander("Klik di sini untuk melihat Pembahasan"):
-            st.write("Langkah 1: Ubah massa ke mol (Jembatan Mol).")
-            st.latex(r"n = \frac{8\text{ g}}{16} = 0,5\text{ mol}")
-            st.write("Langkah 2: Gunakan rumus Gas Ideal ($T = 27 + 273 = 300\text{ K}$).")
-            st.latex(r"V = \frac{n \times R \times T}{P} = \frac{0,5 \times 0,082 \times 300}{1} = 12,3\text{ Liter}")
+        st.markdown("**A. Keadaan Standar / STP (0°C, 1 atm)**")
+        st.latex(r"V_{STP} = n \times 22,4 \quad \iff \quad n = \frac{V_{STP}}{22,4}")
+        
+        st.markdown("**B. Keadaan Kamar / RTP (25°C, 1 atm)**")
+        st.latex(r"V_{RTP} = n \times 24 \quad \iff \quad n = \frac{V_{RTP}}{24}")
+        
+        st.markdown("**C. Persamaan Gas Ideal (Suhu & Tekanan Tertentu)**")
+        st.latex(r"P \times V = n \times R \times T \quad \iff \quad V = \frac{n \times R \times T}{P}")
+        st.caption("P = Tekanan (atm), V = Volume (L), R = 0,082 L.atm/mol.K, T = Suhu Mutlak (Kelvin = °C + 273)")
+        
+        st.markdown("**D. Kondisi Dua Gas Lain (Suhu & Tekanan Sama)**")
+        st.write("Pada suhu dan tekanan yang sama, perbandingan volume gas akan sama dengan perbandingan molnya.")
+        st.latex(r"\frac{V_1}{V_2} = \frac{n_1}{n_2}")
 
-        st.markdown("##### ✍️ Latihan Mandiri (Tanpa Pembahasan)")
-        st.write("Berapa volume dari 0,2 mol gas oksigen pada keadaan STP?")
-        st.text_input("Tulis jawabanmu (contoh: 4,48 Liter):", key="l2_m3")
+        st.markdown("##### 📝 Latihan Soal + Pembahasan")
+        st.write("Hitunglah volume dari 4,4 gram gas $\text{CO}_2$ (Mr = 44) jika diukur pada suhu 27°C dan tekanan 2 atm! ($R = 0,082$)")
+        with st.expander("Klik untuk melihat Pembahasan"):
+            st.write("**Jawaban:**")
+            st.write("Langkah 1: Cari mol gas $\text{CO}_2$ terlebih dahulu.")
+            st.latex(r"n = \frac{4,4\text{ gram}}{44\text{ g/mol}} = 0,1\text{ mol}")
+            st.write("Langkah 2: Konversi suhu ke Kelvin ($T = 27 + 273 = 300\text{ K}$) dan gunakan rumus gas ideal.")
+            st.latex(r"V = \frac{0,1 \times 0,082 \times 300}{2} = \frac{2,46}{2} = 1,23\text{ Liter}")
+
+        st.markdown("##### ✍️ Soal Latihan Mandiri (Tanpa Pembahasan)")
+        st.write("Tantang dirimu: Pada suhu dan tekanan tertentu, 1 mol gas $\text{N}_2$ memiliki volume 15 Liter. Pada kondisi lingkungan yang sama, berapakah volume dari 0,4 mol gas oksigen ($\text{O}_2$)?")
         st.write("---")
 
-        # --- 4. Mol dan Molaritas ---
-        st.subheader("4. Hubungan Mol dengan Molaritas (Konsentrasi Larutan)")
-        st.write("Molaritas (M) menyatakan jumlah mol zat terlarut dalam tiap 1 Liter larutan.")
-        st.latex(r"M = \frac{n}{V\text{ (Liter)}} \quad \text{atau} \quad n = M \times V\text{ (Liter)}")
+        # --- 4. Mol dan Molaritas (Bolak-Balik) ---
+        st.subheader("4. Hubungan Mol dengan Molaritas (Konsentrasi)")
+        st.write("Molaritas ($M$) menyatakan banyaknya mol zat terlarut dalam setiap satu Liter larutan.")
+        st.markdown("**🔄 Rumus Bolak-Balik:**")
+        st.latex(r"M = \frac{n}{V\text{ (Liter)}} \quad \iff \quad n = M \times V\text{ (Liter)}")
+        st.caption("Jika volume diketahui dalam satuan mililiter (mL), gunakan rumus: $n = \frac{M \times V\text{ (mL)}}{1000}$")
 
         st.markdown("##### 📝 Latihan Soal + Pembahasan")
-        st.write(r"Berapa Molaritas larutan jika 4 gram $\text{NaOH}$ (Mr=40) dilarutkan dalam air hingga volumenya 500 mL?")
-        with st.expander("Klik di sini untuk melihat Pembahasan"):
-            st.latex(r"n = \frac{4\text{ g}}{40} = 0,1\text{ mol} \quad \text{dan} \quad V = 500\text{ mL} = 0,5\text{ L}")
-            st.latex(r"M = \frac{0,1\text{ mol}}{0,5\text{ L}} = 0,2\text{ Molar}")
+        st.write("Sebanyak 4 gram kristal $\text{NaOH}$ (Mr = 40) dilarutkan ke dalam air hingga volume larutan mencapai 250 mL. Berapakah Molaritas larutan yang terbentuk?")
+        with st.expander("Klik untuk melihat Pembahasan"):
+            st.write("**Jawaban:**")
+            st.latex(r"n = \frac{4\text{ gram}}{40\text{ g/mol}} = 0,1\text{ mol}")
+            st.latex(r"V = 250\text{ mL} = 0,25\text{ Liter}")
+            st.latex(r"M = \frac{0,1\text{ mol}}{0,25\text{ Liter}} = 0,4\text{ Molar}")
 
+        st.markdown("##### ✍️ Soal Latihan Mandiri (Tanpa Pembahasan)")
+        st.write("Tantang dirimu: Berapa gram $\text{NaCl}$ (Mr = 58,5) yang harus ditimbang untuk membuat larutan garam dapur dengan konsentrasi 0,2 M sebanyak 500 mL?")
         st.write("---")
 
         # --- 5. Stoikiometri Senyawa ---
-        st.subheader("5. Stoikiometri Senyawa (Kadar & Rumus Empiris)")
-        st.write("**A. Kadar Unsur dalam Senyawa:**")
-        st.latex(r"\% \text{Unsur} = \frac{\text{Jumlah atom} \times \text{Ar}}{\text{Mr Senyawa}} \times 100\%")
-        st.write("**B. Rumus Empiris (RE) & Rumus Molekul (RM):**")
-        st.info("Rumus Empiris adalah perbandingan mol paling sederhana dari unsur-unsur pembentuk senyawa. \nRumus Molekul adalah $(RE)_n = Mr$.")
+        st.subheader("5. Stoikiometri Senyawa (Kadar Unsur & Rumus Empiris)")
+        st.write("Mempelajari komposisi persentase massa unsur di dalam senyawa, serta penentuan Rumus Empiris (RE) dan Rumus Molekul (RM).")
+        st.latex(r"\% \text{Unsur} = \frac{(\text{Jumlah Atom} \times \text{Ar Unsur})}{\text{Mr Senyawa}} \times 100\%")
 
     with tab_kuis:
-        st.subheader("✍️ Kuis Evaluasi Level 2 (15 Soal Komprehensif)")
-        st.write("Syarat lulus: Minimal benar 12 soal (Skor KKM: 80).")
+        st.subheader("✍️ Kuis Evaluasi Level 2")
+        st.write("Kuis ini proporsional dirancang untuk menguji seluruh aspek pemahaman Jembatan Mol yang telah dipelajari di atas.")
         st.write("---")
         
-        st.markdown("**Bagian 1: Konsep Mol Dasar (Massa & Partikel)**")
-        q1 = st.radio("1. Jika Ar Fe=56, berapakah massa dari 0,5 mol logam besi?", ["28 gram", "56 gram", "112 gram", "14 gram"], key="l2q1")
-        q2 = st.radio("2. Berapakah jumlah mol dari 9,8 gram H2SO4? (Mr = 98)", ["0,01 mol", "0,1 mol", "1 mol", "10 mol"], key="l2q2")
-        q3 = st.radio("3. Satu mol suatu senyawa selalu mengandung...", ["Satu gram zat", "22,4 Liter pada suhu berapapun", "6,02 x 10^23 partikel", "Massa yang sama dengan air"], key="l2q3")
-        q4 = st.radio("4. Berapa jumlah molekul yang terdapat dalam 0,2 mol gas O2?", ["1,204 x 10^23 molekul", "3,01 x 10^23 molekul", "6,02 x 10^22 molekul", "1,204 x 10^22 molekul"], key="l2q4")
-        q5 = st.radio("5. Suatu sampel mengandung 3,01 x 10^23 atom Karbon. Berapakah massa sampel tersebut? (Ar C=12)", ["3 gram", "6 gram", "12 gram", "24 gram"], key="l2q5")
+        st.markdown("##### 🧩 Kelompok A: Hubungan Mol, Massa, dan Partikel")
+        q1 = st.radio("1. Diketahui Ar H=1, C=12, O=16. Massa dari 2 mol molekul air (H2O) adalah...", ["18 gram", "36 gram", "9 gram", "54 gram"], key="l2q1")
+        q2 = st.radio("2. Jumlah mol yang terkandung dalam 12 gram atom Karbon adalah...", ["1 mol", "0,5 mol", "2 mol", "0,1 mol"], key="l2q2")
+        q3 = st.radio("3. Berapakah jumlah atom total yang terdapat di dalam 0,5 mol logam tembaga (Cu)?", ["6,02 x 10^23 atom", "3,01 x 10^23 atom", "1,204 x 10^23 atom", "3,01 x 10^22 atom"], key="l2q3")
+        q4 = st.radio("4. Suatu sampel gas mengandung 1,204 x 10^24 molekul CO2. Jumlah mol sampel gas tersebut adalah...", ["1 mol", "2 mol", "0,2 mol", "0,5 mol"], key="l2q4")
+        q5 = st.radio("5. Jika massa dari 3,01 x 10^23 atom suatu unsur logam murni adalah 28 gram, berapakah Ar (massa atom relatif) logam tersebut?", ["14 g/mol", "28 g/mol", "56 g/mol", "112 g/mol"], key="l2q5")
 
-        st.markdown("**Bagian 2: Jembatan Mol (Volume & Molaritas)**")
-        q6 = st.radio("6. Berapa volume dari 0,5 mol gas N2 pada keadaan STP (0°C, 1 atm)?", ["11,2 L", "22,4 L", "5,6 L", "44,8 L"], key="l2q6")
-        q7 = st.radio("7. Jika volume gas CO2 pada keadaan RTP (25°C, 1 atm) adalah 12 Liter, berapa mol gas tersebut?", ["0,2 mol", "0,5 mol", "1 mol", "2 mol"], key="l2q7")
-        q8 = st.radio("8. Massa dari 5,6 Liter gas SO2 pada keadaan STP adalah... (Ar S=32, O=16, Mr=64)", ["8 gram", "16 gram", "32 gram", "64 gram"], key="l2q8")
-        q9 = st.radio("9. Jika 2 mol gas O2 berada dalam tabung pada suhu 27°C (300K) dan tekanan 2 atm (R=0,082), volumenya adalah...", ["12,3 L", "24,6 L", "30 L", "49,2 L"], key="l2q9")
-        q10 = st.radio("10. Sebanyak 5,85 gram NaCl (Mr=58,5) dilarutkan dalam air hingga volumenya 250 mL. Molaritas larutan tersebut adalah...", ["0,1 M", "0,2 M", "0,4 M", "1,0 M"], key="l2q10")
+        st.markdown("##### 🌬️ Kelompok B: Hubungan Mol dengan Volume Gas (4 Kondisi)")
+        q6 = st.radio("6. Berapakah volume dari 0,25 mol gas oksigen (O2) jika diukur pada keadaan standar STP?", ["5,6 Liter", "11,2 Liter", "22,4 Liter", "2,8 Liter"], key="l2q6")
+        q7 = st.radio("7. Gas metana (CH4) bermassa 8 gram (Mr=16) diukur pada kondisi kamar RTP memiliki volume sebesar...", ["11,2 Liter", "24 Liter", "12 Liter", "5,6 Liter"], key="l2q7")
+        q8 = st.radio("8. Hitunglah volume dari 0,5 mol gas ideal yang berada dalam wadah bersuhu 27°C (300 K) bertekanan 1 atm! (R=0,082)", ["12,3 Liter", "24,6 Liter", "11,2 Liter", "22,4 Liter"], key="l2q8")
+        q9 = st.radio("9. Pada suhu dan tekanan tertentu, 2 mol gas O2 bervolume 10 Liter. Pada kondisi yang sama, volume dari 4 mol gas CO2 adalah...", ["5 Liter", "10 Liter", "20 Liter", "40 Liter"], key="l2q9")
+        q10 = st.radio("10. Jika 4,48 Liter gas N2 pada keadaan STP ditimbang, berapakah massa gas tersebut? (Mr N2 = 28)", ["5,6 gram", "2,8 gram", "14 gram", "7 gram"], key="l2q10")
 
-        st.markdown("**Bagian 3: Stoikiometri Senyawa & Campuran**")
-        q11 = st.radio("11. Berapakah persentase massa unsur Karbon (Ar C=12) dalam senyawa CO(NH2)2 (Mr=60)?", ["12%", "20%", "24%", "40%"], key="l2q11")
-        q12 = st.radio("12. Suatu senyawa memiliki rumus empiris CH2. Jika Mr senyawa tersebut adalah 42, maka rumus molekulnya adalah... (Ar C=12, H=1)", ["C2H4", "C3H6", "C4H8", "C5H10"], key="l2q12")
-        q13 = st.radio("13. Senyawa hidrokarbon mengandung 80% Karbon dan 20% Hidrogen. Rumus empirisnya adalah... (Ar C=12, H=1)", ["CH2", "CH3", "C2H4", "C2H6"], key="l2q13")
-        q14 = st.radio("14. Volume larutan HCl 0,2 M yang mengandung 0,1 mol HCl adalah...", ["200 mL", "250 mL", "500 mL", "1000 mL"], key="l2q14")
-        q15 = st.radio("15. [Tantangan] Massa 3,01 x 10^23 molekul gas X adalah 22 gram. Berapakah volume gas X tersebut pada keadaan STP?", ["5,6 Liter", "11,2 Liter", "22,4 Liter", "44,8 Liter"], key="l2q15")
+        st.markdown("##### 🧪 Kelompok C: Molaritas, Kadar Unsur, dan Integrasi Jembatan Mol")
+        q11 = st.radio("11. Sebanyak 0,1 mol asam klorida (HCl) dilarutkan ke dalam air hingga volume 500 mL. Berapakah molaritas larutan?", ["0,1 M", "0,2 M", "0,5 M", "0,05 M"], key="l2q11")
+        q12 = st.radio("12. Berapakah persentase massa unsur Oksigen (Ar O=16) di dalam senyawa urea CO(NH2)2 yang memiliki Mr = 60?", ["16,67%", "26,67%", "40,00%", "12,00%"], key="l2q12")
+        q13 = st.radio("13. Berapakah jumlah mol zat terlarut yang ada di dalam 250 mL larutan asam sulfat (H2SO4) dengan konsentrasi 0,4 M?", ["0,1 mol", "1 mol", "0,01 mol", "0,4 mol"], key="l2q13")
+        q14 = st.radio("14. Suatu senyawa hidrokarbon memiliki rumus empiris CH2 dengan Mr = 56. Rumus molekul senyawa tersebut adalah... (Ar C=12, H=1)", ["C2H4", "C3H6", "C4H8", "C5H10"], key="l2q14")
+        q15 = st.radio("15. [Tantangan Jembatan Mol] Massa dari 11,2 Liter gas X pada keadaan STP adalah 22 gram. Berapakah jumlah partikel molekul yang ada di dalam 44 gram gas X tersebut?", ["6,02 x 10^23 molekul", "3,01 x 10^23 molekul", "1,204 x 10^24 molekul", "6,02 x 10^22 molekul"], key="l2q15")
 
         st.write("---")
         if st.button("Kirim Lembar Jawaban Level 2 📝"):
             jawaban_benar = 0
-            if q1 == "28 gram": jawaban_benar += 1
-            if q2 == "0,1 mol": jawaban_benar += 1
-            if q3 == "6,02 x 10^23 partikel": jawaban_benar += 1
-            if q4 == "1,204 x 10^23 molekul": jawaban_benar += 1
-            if q5 == "6 gram": jawaban_benar += 1
-            if q6 == "11,2 L": jawaban_benar += 1
-            if q7 == "0,5 mol": jawaban_benar += 1
-            if q8 == "16 gram": jawaban_benar += 1
-            if q9 == "24,6 L": jawaban_benar += 1
-            if q10 == "0,4 M": jawaban_benar += 1
-            if q11 == "20%": jawaban_benar += 1
-            if q12 == "C3H6": jawaban_benar += 1
-            if q13 == "CH3": jawaban_benar += 1
-            if q14 == "500 mL": jawaban_benar += 1
-            if q15 == "11,2 Liter": jawaban_benar += 1
+            if q1 == "36 gram": jawaban_benar += 1
+            if q2 == "1 mol": jawaban_benar += 1
+            if q3 == "3,01 x 10^23 atom": jawaban_benar += 1
+            if q4 == "2 mol": jawaban_benar += 1
+            if q5 == "56 g/mol": jawaban_benar += 1
+            if q6 == "5,6 Liter": jawaban_benar += 1
+            if q7 == "12 Liter": jawaban_benar += 1
+            if q8 == "12,3 Liter": jawaban_benar += 1
+            if q9 == "20 Liter": jawaban_benar += 1
+            if q10 == "5,6 gram": jawaban_benar += 1
+            if q11 == "0,2 M": jawaban_benar += 1
+            if q12 == "26,67%": jawaban_benar += 1
+            if q13 == "0,1 mol": jawaban_benar += 1
+            if q14 == "C4H8": jawaban_benar += 1
+            if q15 == "6,02 x 10^23 molekul": jawaban_benar += 1
             
             skor = round((jawaban_benar / 15) * 100)
             
             if skor >= 80:
                 st.session_state.level_3_terbuka = True
-                st.success(f"🎉 LULUS! Kamu benar {jawaban_benar} dari 15 soal. Skor kamu: {skor}. Kunci Level 3 resmi DIBUKA!")
+                st.success(f"🎉 LUAR BIASA! Kamu menjawab {jawaban_benar} dari 15 soal dengan benar. Skor kamu: {skor} (KKM: 80). Akses Level 3 resmi terbuka!")
                 st.balloons()
             else:
-                st.error(f"❌ BELUM LULUS! Kamu baru benar {jawaban_benar} dari 15 soal. Skor kamu: {skor} (KKM: 80). Silakan baca lagi peta Jembatan Mol di pembahasan!")
-            
-            st.markdown("### 💡 Kunci Jawaban & Pembahasan Lengkap")
-            
-            st.info("1. **28 gram**")
-            st.latex(r"\text{Massa} = 0,5\text{ mol} \times 56 = 28\text{ g}")
-            
-            st.info("2. **0,1 mol**")
-            st.latex(r"n = \frac{9,8\text{ g}}{98} = 0,1\text{ mol}")
-            
-            st.info("3. **6,02 x 10^23 partikel** (Definisi tetapan Avogadro)")
-            
-            st.info("4. **1,204 x 10^23 molekul**")
-            st.latex(r"\text{Molekul} = 0,2 \times (6,02 \times 10^{23}) = 1,204 \times 10^{23}")
-            
-            st.info("5. **6 gram**")
-            st.latex(r"n = \frac{3,01 \times 10^{23}}{6,02 \times 10^{23}} = 0,5\text{ mol}. \quad \text{Massa} = 0,5 \times 12 = 6\text{ g}")
-            
-            st.info("6. **11,2 L**")
-            st.latex(r"V = 0,5\text{ mol} \times 22,4 = 11,2\text{ L}")
-            
-            st.info("7. **0,5 mol**")
-            st.latex(r"n = \frac{12\text{ L}}{24\text{ (RTP)}} = 0,5\text{ mol}")
-            
-            st.info("8. **16 gram**")
-            st.latex(r"n = \frac{5,6}{22,4} = 0,25\text{ mol}. \quad \text{Massa} = 0,25 \times 64 = 16\text{ g}")
-            
-            st.info("9. **24,6 L** (Gas Ideal)")
-            st.latex(r"V = \frac{n \times R \times T}{P} = \frac{2 \times 0,082 \times 300}{2} = 24,6\text{ L}")
-            
-            st.info("10. **0,4 M**")
-            st.latex(r"n = \frac{5,85}{58,5} = 0,1\text{ mol}. \quad M = \frac{0,1\text{ mol}}{0,25\text{ L}} = 0,4\text{ M}")
-
-            st.info("11. **20%**")
-            st.latex(r"\% C = \frac{1 \times 12}{60} \times 100\% = 20\%")
-            
-            st.info("12. **C3H6**")
-            st.latex(r"(\text{CH}_2)_n = 42 \implies (12 + 2)_n = 42 \implies 14n = 42 \implies n = 3")
-            
-            st.info("13. **CH3**")
-            st.latex(r"\text{Mol C} : \text{Mol H} = \frac{80}{12} : \frac{20}{1} = 6,67 : 20 = 1 : 3")
-            
-            st.info("14. **500 mL**")
-            st.latex(r"V = \frac{n}{M} = \frac{0,1}{0,2} = 0,5\text{ L} = 500\text{ mL}")
-            
-            st.info("15. **11,2 Liter** (Jembatan Mol Ekstra)")
-            st.write("Partikel -> Mol -> Volume STP")
-            st.latex(r"n = \frac{3,01 \times 10^{23}}{6,02 \times 10^{23}} = 0,5\text{ mol}. \quad V = 0,5 \times 22,4 = 11,2\text{ Liter}")
+                st.error(f"❌ BELUM LULUS. Kamu menjawab {jawaban_benar} dari 15 soal dengan benar. Skor kamu: {skor} (KKM: 80). Jangan patah semangat, pelajari kembali peta jembatan mol di atas!")
+                
+            st.markdown("### 💡 Kunci Jawaban & Pembahasan Detil")
+            st.info("1. **36 gram**. Mr H2O = 18. Massa = $2\text{ mol} \times 18 = 36\text{ gram}$.")
+            st.info("2. **1 mol**. $n = 12 / 12 = 1\text{ mol}$.")
+            st.info("3. **3,01 x 10^23 atom**. Partikel = $0,5 \times 6,02 \times 10^{23} = 3,01 \times 10^{23}$.")
+            st.info("4. **2 mol**. $n = (1,204 \times 10^{24}) / (6,02 \times 10^{23}) = 2\text{ mol}$.")
+            st.info("5. **56 g/mol**. $n = 0,5\text{ mol}$. $\text{Ar} = 28 / 0,5 = 56\text{ g/mol}$.")
+            st.info("6. **5,6 Liter**. $V = 0,25 \times 22,4 = 5,6\text{ Liter}$.")
+            st.info("7. **12 Liter**. $n = 8/16 = 0,5\text{ mol}$. $V = 0,5 \times 24 = 12\text{ Liter}$.")
+            st.info("8. **12,3 Liter**. $V = (0,5 \times 0,082 \times 300)/1 = 12,3\text{ Liter}$.")
+            st.info("9. **20 Liter**. Mol naik 2 kali lipat ($2 \rightarrow 4$), maka volume naik 2 kali lipat ($10 \rightarrow 20\text{ L}$).")
+            st.info("10. **5,6 gram**. $n = 4,48 / 22,4 = 0,2\text{ mol}$. $\text{Massa} = 0,2 \times 28 = 5,6\text{ gram}$.")
+            st.info("11. **0,2 M**. $M = 0,1\text{ mol} / 0,5\text{ L} = 0,2\text{ M}$.")
+            st.info("12. **26,67%**. $\%O = (1 \times 16)/60 \times 100\% = 26,67\%$.")
+            st.info("13. **0,1 mol**. $n = 0,4\text{ M} \times 0,25\text{ L} = 0,1\text{ mol}$.")
+            st.info("14. **C4H8**. $\text{Mr (CH2)}_n = 56 \implies 14n = 56 \implies n = 4$. Rumus: $\text{C}_4\text{H}_8$.")
+            st.info("15. **6,02 x 10^23 molekul**. $11,2\text{ L STP} = 0,5\text{ mol}$ ($22\text{ g}$). Berarti $44\text{ g} = 1\text{ mol} = 6,02 \times 10^{23}$ molekul.")
             
 # ==================================================
 # TOMBOL LOGOUT (Selalu di paling bawah)
