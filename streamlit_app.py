@@ -65,7 +65,8 @@ if not st.session_state.sudah_login:
             st.error(teks[lang]['salah'])
 
 # --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
-elif st.session_state.menu_aktif == 'dashboard':
+elif st.session_state.get('menu_aktif') == 'dashboard':
+    
     st.success(f"{teks[lang]['berhasil']} {st.session_state.username}! 🎉")
     
     # Menu Pilihan Dashboard Utama
@@ -76,7 +77,8 @@ elif st.session_state.menu_aktif == 'dashboard':
         st.session_state.menu_aktif = 'level_1'
         st.rerun()
 
-elif st.session_state.menu_aktif == 'level_1':
+elif st.session_state.get('menu_aktif') == 'level_1':
+    
     if st.button("⬅️ Kembali ke Dashboard"):
         st.session_state.menu_aktif = 'dashboard'
         st.rerun()
