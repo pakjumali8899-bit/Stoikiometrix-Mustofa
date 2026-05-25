@@ -3,16 +3,17 @@ import streamlit as st
 # --- KONFIGURASI HALAMAN ---
 st.set_page_config(page_title="Stoikiometrix by Mustofa", page_icon="🧪")
 
-# --- SESSION STATE UNTUK BAHASA & LOGIN ---
-# Ini fungsi agar web ingat pilihan bahasa dan status login siswa
-# --- INISIALISASI STATUS LOGIN ---
+# --- INISIALISASI STATUS LOGIN & MENU ---
 if 'sudah_login' not in st.session_state:
     st.session_state.sudah_login = False
 
-# --- PENGATURAN TOKEN RAHASIA ---
-TOKEN_AKSES = "54321"  # Kamu bisa ubah kode tokennya di sini
+if 'menu_aktif' not in st.session_state:
+    st.session_state.menu_aktif = 'dashboard'
 
-# --- LOGIKA FORM LOGIN ---
+# --- PENGATURAN TOKEN RAHASIA ---
+TOKEN_AKSES = "54321"
+
+# --- LOGIKA FORM LOGIN (JIKA BELUM LOGIN) ---
 if not st.session_state.sudah_login:
     # --- JUDUL ANIMASI KECE STOIKIOMETRIX ---
     st.markdown("""
@@ -46,10 +47,10 @@ if not st.session_state.sudah_login:
             <span class="sub-flat">by Mustofa</span>
         </div>
     """, unsafe_allow_html=True)
+    
     st.write("Silakan masukkan token untuk mengakses aplikasi pembelajaran.")
     
-    # Input khusus untuk Token
-    token_input = st.text_input("Token Akses:", type="password", help="Masukkan kode akses dari Gurumu")
+    token_input = st.text_input("Token Akses:", type="password")
     
     if st.button("Masuk 🚀"):
         if token_input == TOKEN_AKSES:
@@ -58,63 +59,7 @@ if not st.session_state.sudah_login:
             st.rerun()
         else:
             st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
-
-else:
-    # --- SEMUA KODE DASHBOARD UTAMA KAMU (LEVEL 1, 2, 3) DI LETAKKAN DI SINI ---
-    # Pastikan kode menu dashboard & level kamu berada di dalam blok 'else' ini (menjorok ke dalam)
-    
-if 'sudah_login' not in st.session_state:
-    st.session_state.sudah_login = False
-if 'username' not in st.session_state:
-    st.session_state.username = ""
-# --- HALAMAN LOGIN ---
-if not st.session_state.sudah_login:
-    # --- JUDUL ANIMASI KECE STOIKIOMETRIX ---
-    st.markdown("""
-        <style>
-        @keyframes gradient-gerak {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .judul-kece {
-            font-size: 45px;
-            font-weight: 800;
-            background: linear-gradient(-45deg, #ff4b4b, #ff8585, #4b92ff, #2b5cff);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-color: transparent;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-gerak 4s ease infinite;
-            display: inline-block;
-        }
-        .sub-flat {
-            font-size: 20px;
-            color: #666666;
-            font-weight: 400;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-        </style>
-        <div>
-            <span class="judul-kece">Stoikiometrix</span>
-            <span class="sub-flat">by Mustofa</span>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    st.write("Silakan masukkan token untuk mengakses aplikasi pembelajaran.")
-    
-    # Input khusus untuk Token
-    token_input = st.text_input("Token Akses:", type="password")
-    
-    if st.button("Masuk 🚀"):
-        if token_input == "54321":
-            st.session_state.sudah_login = True
-            st.session_state.username = "Mustofa"
-            st.success("Token benar! Selamat belajar.")
-            st.rerun()
-        else:
-            st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
+            
 # --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
 elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
     if st.session_state.get('menu_aktif') is None:
