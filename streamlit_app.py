@@ -294,9 +294,9 @@ elif st.session_state.get('menu_aktif') == 'level_2':
         
         # Memasukkan gambar GIF Jembatan Mol yang sudah kamu sediakan
         try:
-            st.image("1000029963.gif", caption="Peta Konsep Jembatan Mol", use_container_width=True)
+            st.image("konsep_mol.gif", caption="Peta Konsep Jembatan Mol", use_container_width=True)
         except:
-            st.warning("Gambar Jembatan Mol (1000029963.gif) belum terbaca. Pastikan file sudah ter-upload di folder yang sama dengan aplikasi.")
+            st.warning("Gambar Jembatan Mol (konsep_mol.gif) belum terbaca. Pastikan file sudah ter-upload di folder yang sama dengan aplikasi.")
             
         # Memasukkan URL referensi sesuai permintaan
         st.markdown("*Sumber referensi materi & ilustrasi: [Segalanya Kimia - Konsep Mol](https://segalanyakimia.blogspot.com/2017/04/konsep-mol.html)*")
