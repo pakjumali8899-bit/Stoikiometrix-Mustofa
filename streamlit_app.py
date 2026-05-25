@@ -277,6 +277,102 @@ elif st.session_state.get('menu_aktif') == 'level_1':
             
             st.markdown("**10. [Hipotesis Avogadro] Jawaban: Jumlah molekul dan Volume gas** (Inti dari hipotesis Amadeo Avogadro)")
 
+elif st.session_state.get('menu_aktif') == 'level_2':
+    if st.button("⬅️ Kembali ke Dashboard"):
+        st.session_state.menu_aktif = 'dashboard'
+        st.rerun()
+        
+    st.title("🧪 Level 2: Konsep Mol & Stoikiometri")
+    
+    tab_materi, tab_kuis = st.tabs(["📖 Materi & Latihan Mandiri", "✍️ Kuis Akhir Level 2"])
+
+    with tab_materi:
+        st.write("Pelajari konsep mol di bawah ini, ini adalah jantungnya perhitungan kimia!")
+        st.write("---")
+
+        # --- 1. Mol dan Massa ---
+        st.subheader("1. Hubungan Mol dengan Massa (Gram)")
+        st.info("Satu mol zat apa pun memiliki massa yang angkanya sama persis dengan Ar (Massa Atom Relatif) atau Mr (Massa Molekul Relatif) zat tersebut.")
+        st.latex(r"\text{Jumlah Mol } (n) = \frac{\text{Massa (gram)}}{\text{Ar atau Mr}}")
+        
+        st.markdown("##### 📝 Latihan Soal + Pembahasan")
+        st.write(r"Berapa jumlah mol dari 18 gram air ($\text{H}_2\text{O}$)? (Diketahui: Ar H = 1, O = 16)")
+        with st.expander("Klik di sini untuk melihat Pembahasan"):
+            st.write(r"Cari Mr $\text{H}_2\text{O}$ terlebih dahulu:")
+            st.latex(r"\text{Mr H}_2\text{O} = (2 \times 1) + 16 = 18")
+            st.write("Masukkan ke rumus:")
+            st.latex(r"n = \frac{18\text{ gram}}{18} = 1\text{ mol}")
+            
+        st.markdown("##### ✍️ Soal Latihan Mandiri (Tanpa Pembahasan)")
+        st.write(r"Hitunglah jumlah mol dari 11 gram gas $\text{CO}_2$! (Diketahui: Ar C = 12, O = 16)")
+        st.text_input("Tulis jawabanmu di sini (contoh: 0,5 mol):", key="latihan_mol_massa")
+        st.write("---")
+
+        # --- 2. Mol dan Volume ---
+        st.subheader("2. Hubungan Mol dengan Volume Gas (Keadaan STP)")
+        st.info("Pada keadaan standar (STP: 0°C, 1 atm), 1 mol gas apa saja volumenya selalu konstan, yaitu **22,4 Liter**.")
+        st.latex(r"\text{Volume STP} = n \times 22,4\text{ Liter/mol}")
+        
+        st.markdown("##### 📝 Latihan Soal + Pembahasan")
+        st.write("Berapa volume dari 0,5 mol gas nitrogen pada keadaan STP?")
+        with st.expander("Klik di sini untuk melihat Pembahasan"):
+            st.latex(r"\text{Volume} = 0,5\text{ mol} \times 22,4\text{ L/mol} = 11,2\text{ Liter}")
+
+        st.markdown("##### ✍️ Soal Latihan Mandiri (Tanpa Pembahasan)")
+        st.write("Jika diukur pada keadaan STP, sebuah wadah berisi 5,6 Liter gas oksigen. Berapa mol jumlah gas tersebut?")
+        st.text_input("Tulis jawabanmu di sini:", key="latihan_mol_vol")
+        st.write("---")
+
+        # --- 3. Mol dan Jumlah Partikel ---
+        st.subheader("3. Hubungan Mol dengan Jumlah Partikel")
+        st.info(r"Satu mol zat mengandung partikel (atom/molekul/ion) sebanyak Bilangan Avogadro, yaitu **$6,02 \times 10^{23}$**.")
+        st.latex(r"\text{Jumlah Partikel} = n \times (6,02 \times 10^{23})")
+
+    with tab_kuis:
+        st.subheader("✍️ Kuis Evaluasi Level 2 (5 Soal)")
+        st.write("Syarat lulus: Minimal benar 4 soal (Skor 80).")
+        st.write("---")
+        
+        q1 = st.radio("1. Jika diketahui Ar C=12 dan O=16, berapakah massa dari 2 mol gas CO2?", ["44 gram", "88 gram", "22 gram", "11 gram"], key="l2_q1")
+        q2 = st.radio("2. Berapakah volume dari 2 mol gas Hidrogen jika diukur pada keadaan STP (0°C, 1 atm)?", ["11,2 L", "22,4 L", "44,8 L", "5,6 L"], key="l2_q2")
+        q3 = st.radio("3. Sebanyak 4 gram gas Metana (CH4) setara dengan... (Mr CH4 = 16)", ["0,25 mol", "0,5 mol", "1 mol", "2 mol"], key="l2_q3")
+        q4 = st.radio("4. Tetapan Avogadro yang menunjukkan jumlah partikel dalam 1 mol zat bernilai...", ["6,02 x 10^22", "6,02 x 10^23", "6,02 x 10^24", "10^23"], key="l2_q4")
+        q5 = st.radio("5. Berapakah jumlah mol gas O2 yang memiliki volume sebesar 11,2 Liter pada keadaan STP?", ["0,25 mol", "0,5 mol", "1 mol", "2 mol"], key="l2_q5")
+        
+        st.write("---")
+        if st.button("Kirim Lembar Jawaban Kuis Level 2 📝"):
+            skor = 0
+            if q1 == "88 gram": skor += 20
+            if q2 == "44,8 L": skor += 20
+            if q3 == "0,25 mol": skor += 20
+            if q4 == "6,02 x 10^23": skor += 20
+            if q5 == "0,5 mol": skor += 20
+            
+            if skor >= 80:
+                # Ini kode rahasia membuka pintu ke Level 3
+                st.session_state.level_3_terbuka = True
+                st.success(f"🎉 LULUS! KKM Tercapai. Skor kamu: {skor}/100. Kunci Level 3 resmi DIBUKA!")
+                st.balloons()
+            else:
+                st.error(f"❌ BELUM LULUS! Skor kamu: {skor}/100 (KKM: 80). Silakan baca lagi pembahasan di bawah!")
+            
+            st.markdown("### 💡 Kunci Jawaban & Pembahasan Lengkap")
+            
+            st.markdown("**1. 88 gram**")
+            st.latex(r"\text{Massa} = n \times \text{Mr} = 2 \times 44 = 88\text{ gram}")
+            
+            st.markdown("**2. 44,8 L**")
+            st.latex(r"\text{Volume STP} = n \times 22,4 = 2 \times 22,4 = 44,8\text{ Liter}")
+            
+            st.markdown("**3. 0,25 mol**")
+            st.latex(r"n = \frac{\text{Massa}}{\text{Mr}} = \frac{4\text{ gram}}{16} = 0,25\text{ mol}")
+            
+            st.markdown("**4. 6,02 x 10^23**")
+            st.write("Ini adalah hafalan wajib Hukum Ketetapan Avogadro.")
+            
+            st.markdown("**5. 0,5 mol**")
+            st.latex(r"n = \frac{\text{Volume STP}}{22,4} = \frac{11,2\text{ L}}{22,4\text{ L/mol}} = 0,5\text{ mol}")
+
 
 # ==================================================
 # TOMBOL LOGOUT (Selalu di paling bawah)
