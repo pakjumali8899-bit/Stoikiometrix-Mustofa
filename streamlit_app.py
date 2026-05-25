@@ -16,9 +16,8 @@ if 'nama_user' not in st.session_state:
 # --- PENGATURAN TOKEN RAHASIA ---
 TOKEN_AKSES = "54321"
 
-# --- LOGIKA TAMPILAN UTAMA (LOGIN ATAU MENU) ---
+# --- LOGIKA TAMPILAN UTAMA (LOGIN) ---
 if not st.session_state.sudah_login:
-    # TAMPILAN JIKA BELUM LOGIN
     st.markdown("""
         <style>
         @keyframes gradient-gerak {
@@ -67,36 +66,34 @@ if not st.session_state.sudah_login:
         else:
             st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
 
-else:
-    # TAMPILAN JIKA SUDAH LOGIN (DASHBOARD)
-    if st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
-        st.success(f"Selamat datang kembali, {st.session_state.nama_user}! 🎉")
-        st.title("🧪 Dashboard Utama")
-        st.write("Silakan pilih level pembelajaran di bawah ini:")
+# --- LOGIKA TAMPILAN DASHBOARD (SETELAH LOGIN) ---
+elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
+    st.success(f"Selamat datang kembali, {st.session_state.nama_user}! 🎉")
+    st.title("🧪 Dashboard Utama")
+    st.write("Silakan pilih level pembelajaran di bawah ini:")
 
-        if 'level_2_terbuka' not in st.session_state:
-            st.session_state.level_2_terbuka = False
-        if 'level_3_terbuka' not in st.session_state:
-            st.session_state.level_3_terbuka = False
+    if 'level_2_terbuka' not in st.session_state:
+        st.session_state.level_2_terbuka = False
+    if 'level_3_terbuka' not in st.session_state:
+        st.session_state.level_3_terbuka = False
 
-        if st.button("🚀 Masuk ke Level 1: Hukum Dasar Kimia"):
-            st.session_state.menu_aktif = 'level_1'
-            st.rerun()
-            
-        if st.button("🎮 Masuk ke Level 2: Konsep Mol & Stoikiometri"):
-            st.session_state.menu_aktif = 'level_2'
-            st.rerun()
-            
-        if st.button("🔥 Masuk ke Level 3: Perhitungan Persamaan Reaksi"):
-            st.session_state.menu_aktif = 'level_3'
-            st.rerun()
+    if st.button("🚀 Masuk ke Level 1: Hukum Dasar Kimia"):
+        st.session_state.menu_aktif = 'level_1'
+        st.rerun()
+        
+    if st.button("🎮 Masuk ke Level 2: Konsep Mol & Stoikiometri"):
+        st.session_state.menu_aktif = 'level_2'
+        st.rerun()
+        
+    if st.button("🔥 Masuk ke Level 3: Perhitungan Persamaan Reaksi"):
+        st.session_state.menu_aktif = 'level_3'
+        st.rerun()
 
-        # Tombol Keluar / Logout SEKARANG AMAN DI SINI
-        st.write("---")
-        if st.button("🚪 Keluar / Logout"):
-            st.session_state.sudah_login = False
-            st.session_state.menu_aktif = 'dashboard'
-            st.rerun()
+    st.write("---")
+    if st.button("🚪 Keluar / Logout"):
+        st.session_state.sudah_login = False
+        st.session_state.menu_aktif = 'dashboard'
+        st.rerun()
 
 
 elif st.session_state.get('menu_aktif') == 'level_1':
