@@ -115,25 +115,23 @@ if not st.session_state.sudah_login:
             st.rerun()
         else:
             st.error("❌ Token yang kamu masukkan salah. Coba lagi ya!")
-            
 # --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
 elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('menu_aktif') is None:
     if st.session_state.get('menu_aktif') is None:
         st.session_state.menu_aktif = 'dashboard'
         st.rerun()
 
-    st.success(f"Selamat datang kembali, {st.session_state.username}! 🎉")
-    
-    
-    st.title("📋 Dashboard Utama")
+    st.success("Selamat datang kembali di Stoikiometrix! 🎉")
+
+    st.title("🧪 Dashboard Utama")
     st.write("Silakan pilih level pembelajaran di bawah ini:")
-    
+
     # Inisialisasi status kunci level jika belum ada di memori
     if 'level_2_terbuka' not in st.session_state:
         st.session_state.level_2_terbuka = False
     if 'level_3_terbuka' not in st.session_state:
         st.session_state.level_3_terbuka = False
-
+        
         # --- TOMBOL LEVEL 1 (Selalu Terbuka) ---
     if st.button("🚀 Masuk ke Level 1: Hukum Dasar Kimia"):
         st.session_state.menu_aktif = 'level_1'
