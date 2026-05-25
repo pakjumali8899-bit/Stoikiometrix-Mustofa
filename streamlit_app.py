@@ -107,8 +107,58 @@ else:
             st.rerun()
             
         st.title("🧪 Level 1: Hukum Dasar Kimia")
-        st.write("Pondasi awal sudah siap! Di langkah berikutnya, kita akan isi materi lengkap dan kuisnya di sini.")
+                # --- INISIALISASI VARIABEL KUNCI LEVEL ---
+        if 'level_2_terbuka' not in st.session_state:
+            st.session_state.level_2_terbuka = False
 
+        # --- MEMBUAT TAB INTERAKTIF AGAR TIDAK FLAT ---
+        tab1, tab2, tab3 = st.tabs(["📝 Materi Lengkap", "🎛️ Simulasi Lab", "✍️ Kuis Level 1"])
+        
+        # --- TAB 1: MATERI ---
+        with tab1:
+            st.header("1. Hukum Kekekalan Massa (Lavoisier)")
+            st.info("💡 **Inti Teori:** Antoine Lavoisier (1789) menemukan bahwa dalam sistem tertutup, **massa total zat sebelum reaksi sama dengan massa total zat setelah reaksi.**")
+            st.write("### Persamaan Reaksi Kimia Sempurna (Format LaTeX):")
+            st.latex(r"\text{C}_{(s)} + \text{O}_{2(g)} \rightarrow \text{CO}_{2(g)}")
+            st.latex(r"\text{Massa Karbon (12g)} + \text{Massa Oksigen (32g)} = \text{Massa Karbon Dioksida (44g)}")
+            
+            st.write("---")
+            st.header("2. Hukum Perbandingan Tetap (Proust)")
+            st.info("💡 **Inti Teori:** Joseph Proust (1799) menyatakan bahwa **perbandingan massa unsur-unsur dalam suatu senyawa adalah selalu tetap dan tertentu.**")
+            st.write("### Contoh Reaksi Pembentukan Air:")
+            st.latex(r"2\text{H}_{2(g)} + \text{O}_{2(g)} \rightarrow 2\text{H}_2\text{O}_{(l)}")
+            st.write("Perbandingan massa Hidrogen dan Oksigen untuk membentuk air selalu **1 : 8**.")
+
+        # --- TAB 2: SIMULASI INTERAKTIF ---
+        with tab2:
+            st.header("🎛️ Laboratorium Virtual Mini")
+            st.write("Geser tombol di bawah untuk menentukan massa zat pereaksi, lalu lihat apakah Hukum Lavoisier terbukti secara otomatis!")
+            
+            massa_a = st.slider("Masukkan Massa Zat A (gram)", 1.0, 50.0, 10.0, step=0.5)
+            massa_b = st.slider("Masukkan Massa Zat B (gram)", 1.0, 50.0, 20.0, step=0.5)
+            
+            st.metric(label="Massa Total Sebelum & Sesudah Reaksi", value=f"{massa_a + massa_b} gram")
+            st.success("✅ Terbukti! Massa total zat sebelum dan sesudah reaksi nilainya sama sesuai Hukum Lavoisier.")
+
+        # --- TAB 3: KUIS EVALUASI ---
+        with tab3:
+            st.header("✍️ Evaluasi Pemahaman Level 1")
+            st.write("Selesaikan kuis di bawah ini untuk membuka kunci Level 2!")
+            
+            soal1 = st.radio(
+                "Soal 1: Jika 5 gram besi direaksikan dengan 3 gram belerang dalam wadah tertutup rapat, berapakah massa besi belerang yang dihasilkan?",
+                ["3 gram", "5 gram", "8 gram", "15 gram"],
+                key="kuis_s1"
+            )
+            
+            if st.button("Kirim Jawaban 📝"):
+                if soal1 == "8 gram":
+                    st.session_state.level_2_terbuka = True
+                    st.balloons() # Efek animasi balon resmi Streamlit
+                    st.success("🎉 Selamat! Jawabanmu benar (Nilai: 100/100). Kunci Level 2 sekarang sudah TERBUKA!")
+                else:
+                    st.error("❌ Jawabanmu masih kurang tepat. Silakan baca kembali materi di Tab 1 dan coba lagi!")
+                    
     # ==========================================
     # TOMBOL LOGOUT (Selalu di paling bawah)
     # ==========================================
