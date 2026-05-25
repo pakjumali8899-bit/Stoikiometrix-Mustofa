@@ -67,11 +67,56 @@ if not st.session_state.sudah_login:
 # --- HALAMAN UTAMA (JIKA SUDAH LOGIN) ---
 else:
     st.success(f"{teks[lang]['berhasil']} {st.session_state.username}! 🎉")
-    st.write("Di sini nanti kita akan taruh Level 1: Hukum Dasar Kimia.")
+        # 1. Inisialisasi menu halaman di dalam dashboard (jika belum ada)
+    if 'menu_aktif' not in st.session_state:
+        st.session_state.menu_aktif = 'dashboard'
     
-    # Tombol keluar (Logout)
+    # ==========================================
+    # KONDISI A: JIKA DI DASHBOARD UTAMA
+    # ==========================================
+    if st.session_state.menu_aktif == 'dashboard':
+        st.title("Dashboard Pembelajaran 📊")
+        st.write("Pilih level tantanganmu di bawah ini:")
+        
+        # Kotak Level 1
+        with st.container(border=True):
+            st.subheader("🟢 Level 1: Hukum Dasar Kimia")
+            st.write("Pelajari pondasi utama stoikiometri: Hukum Lavoisier & Proust.")
+            if st.button("Mulai Belajar Level 1 🚀"):
+                st.session_state.menu_aktif = 'level_1'
+                st.rerun()
+                
+        # Kotak Level 2 (Terkunci)
+        with st.container(border=True):
+            st.subheader("🔒 Level 2: Stoikiometri Senyawa")
+            st.caption("Terkunci (Selesaikan Level 1 dengan nilai ≥ 70)")
+            st.button("Mulai Level 2 🎯", disabled=True)
+            
+        # Kotak Level 3 (Terkunci)
+        with st.container(border=True):
+            st.subheader("🔒 Level 3: Stoikiometri Reaksi")
+            st.caption("Terkunci (Selesaikan Level 2 dulu)")
+            st.button("Mulai Level 3 ⚔️", disabled=True)
+            
+    # ==========================================
+    # KONDISI B: JIKA SISWA MASUK KE LEVEL 1
+    # ==========================================
+    elif st.session_state.menu_aktif == 'level_1':
+        if st.button("⬅️ Kembali ke Dashboard"):
+            st.session_state.menu_aktif = 'dashboard'
+            st.rerun()
+            
+        st.title("🧪 Level 1: Hukum Dasar Kimia")
+        st.write("Pondasi awal sudah siap! Di langkah berikutnya, kita akan isi materi lengkap dan kuisnya di sini.")
+
+    # ==========================================
+    # TOMBOL LOGOUT (Selalu di paling bawah)
+    # ==========================================
+    st.write("---")
     if st.button("Keluar / Logout"):
         st.session_state.sudah_login = False
         st.session_state.username = ""
+        if 'menu_aktif' in st.session_state:
+            del st.session_state.menu_aktif
         st.rerun()
-      
+        
