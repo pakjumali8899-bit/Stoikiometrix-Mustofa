@@ -277,26 +277,6 @@ elif st.session_state.get('menu_aktif') == 'level_1':
             
             st.markdown("**10. [Hipotesis Avogadro] Jawaban: Jumlah molekul dan Volume gas** (Inti dari hipotesis Amadeo Avogadro)")
 
-elif st.session_state.get('menu_aktif') == 'level_2':
-    if st.button("⬅️ Kembali ke Dashboard"):
-        st.session_state.menu_aktif = 'dashboard'
-        st.rerun()
-        
-    st.title("🧪 Level 2: Konsep Mol & Stoikiometri")
-    
-    tab_materi, tab_kuis = st.tabs(["📖 Materi & Latihan Mandiri", "✍️ Kuis Akhir Level 2"])
-
-    with tab_materi:
-        st.write("Pelajari konsep mol di bawah ini, ini adalah jantungnya perhitungan kimia!")
-        st.write("---")
-
-        # --- 1. Mol dan Massa ---
-        st.subheader("1. Hubungan Mol dengan Massa (Gram)")
-        st.info("Satu mol zat apa pun memiliki massa yang angkanya sama persis dengan Ar (Massa Atom Relatif) atau Mr (Massa Molekul Relatif) zat tersebut.")
-        st.latex(r"\text{Jumlah Mol } (n) = \frac{\text{Massa (gram)}}{\text{Ar atau Mr}}")
-        
-        st.markdown("##### 📝 Latihan Soal + Pembahasan")
-        st.write(r"Berapa jumlah mol dari 18 gram air ($\text{H}_2\text{O}$)? (Diketahui: Ar H = 1, O = 16)")
 
 elif st.session_state.get('menu_aktif') == 'level_2':
     if st.button("⬅️ Kembali ke Dashboard"):
