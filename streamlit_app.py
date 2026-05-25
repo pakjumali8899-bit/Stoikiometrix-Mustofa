@@ -81,29 +81,23 @@ elif st.session_state.get('menu_aktif') == 'dashboard' or st.session_state.get('
     if 'level_3_terbuka' not in st.session_state:
         st.session_state.level_3_terbuka = False
 
-    # --- TOMBOL LEVEL 1 (Selalu Terbuka) ---
+        # --- TOMBOL LEVEL 1 (Selalu Terbuka) ---
     if st.button("🚀 Masuk ke Level 1: Hukum Dasar Kimia"):
         st.session_state.menu_aktif = 'level_1'
         st.rerun()
 
-    # --- TOMBOL LEVEL 2 (Terkunci sampai Level 1 Lulus) ---
+    # --- TOMBOL LEVEL 2 (Bebas Akses / Tanpa Kunci) ---
     st.write("---")
-    if st.session_state.level_2_terbuka:
-        if st.button("🔓 Masuk ke Level 2: Konsep Mol & Stoikiometri"):
-            st.session_state.menu_aktif = 'level_2'
-            st.rerun()
-    else:
-        st.button("🔒 Level 2: Konsep Mol & Stoikiometri (Terkunci - Luluskan Kuis Level 1)", disabled=True)
+    if st.button("🔓 Masuk ke Level 2: Konsep Mol & Stoikiometri"):
+        st.session_state.menu_aktif = 'level_2'
+        st.rerun()
 
-    # --- TOMBOL LEVEL 3 (Terkunci sampai Level 2 Lulus) ---
-    if st.session_state.level_3_terbuka:
-        if st.button("🔓 Masuk ke Level 3: Perhitungan Persamaan Reaksi"):
-            st.session_state.menu_aktif = 'level_3'
-            st.rerun()
-    else:
-        st.button("🔒 Level 3: Perhitungan Persamaan Reaksi (Terkunci - Luluskan Kuis Level 2)", disabled=True)
-
-
+    # --- TOMBOL LEVEL 3 (Bebas Akses / Tanpa Kunci) ---
+    st.write("---")
+    if st.button("🔓 Masuk ke Level 3: Perhitungan Persamaan Reaksi"):
+        st.session_state.menu_aktif = 'level_3'
+        st.rerun()
+        
 elif st.session_state.get('menu_aktif') == 'level_1':
     if st.button("⬅️ Kembali ke Dashboard"):
         st.session_state.menu_aktif = 'dashboard'
